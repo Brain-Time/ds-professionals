@@ -10,7 +10,7 @@
  */
 
 import { motion, AnimatePresence } from 'framer-motion';
-import useTheme from '../../hooks/useTheme';
+import { useTheme } from '../../hooks/useTheme';
 
 // ── SVG: Sonne Icon ────────────────────────────────────────────
 const SunIcon = () => (

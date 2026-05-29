@@ -43,37 +43,24 @@
       → `useTheme` Hook genutzt
       → Accessible (aria-label, role="switch")
 
-### Noch offen aus Schritt 2:
-- [ ] `src/components/ui/Button.jsx`
-      → Varianten: `primary` | `secondary` | `gold` | `outline`
-      → Größen: `sm` | `md` | `lg`
-      → `as` Prop (Link vs Button)
-      → Framer Motion Hover-Animation
-      → Vollständig kommentiert
-
-- [ ] `src/components/ui/SectionWrapper.jsx`
-      → Framer Motion `whileInView` Scroll-Fade
-      → `viewport={{ once: true }}`
-      → Konfigurierbare Delay-Prop
-      → Wiederverwendbar für alle Sektionen
-
 ---
 
 ## 🟠 Schritt 3 — Layout (Navbar & Footer) ✅ ERLEDIGT
 
 - [x] `src/components/layout/Navbar.jsx` ✅
-      → Logo (SVG Besen + Text + Untertitel)
+      → Echtes Logo-Bild (`_a.png` Light / `_b.png` Dark) + Firmenname + Subtitle
       → Desktop Navigation Links (Home | Dienstleistungen | Über uns | Kontakt)
+      → `useTheme` korrekt aus `@/hooks/useTheme` importiert
       → `ThemeToggle` integriert
-      → Mobile Hamburger Menu (Framer Motion Slide-in)
-      → Active Link Highlighting via `useLocation` + `layoutId`
+      → Mobile Hamburger Menu
+      → Active Link Highlighting via `NavLink`
       → Sticky + `backdrop-blur` beim Scrollen
       → CTA Button "Angebot anfragen" (Gold)
-      → Body-Scroll-Lock bei geöffnetem Menü
       → Menü schließt bei Route-Wechsel
 
 - [x] `src/components/layout/Footer.jsx` ✅
-      → Logo + Slogan „Mehr als nur sauber"
+      → Echtes Logo-Bild (`_b.png`, fix dunkel) statt SVG-Platzhalter
+      → Slogan „Mehr als nur sauber"
       → 3 Spalten: Logo+Text | Navigation+Services | Kontakt
       → Services Links (alle 6 Dienstleistungen)
       → Kontaktdaten (Adresse, Tel, E-Mail, Öffnungszeiten)
@@ -98,6 +85,11 @@
 
 - [x] `src/styles/globals.css` (Snippet) ✅
       → Tailwind v4 Dark Mode: `@custom-variant dark`
+
+### Behobene Fehler (Schritt 3):
+- [x] `SyntaxError: useTheme not exported from ThemeContext` → Import auf `@/hooks/useTheme` korrigiert ✅
+- [x] `lucide-react` nicht installiert → `npm install lucide-react` ✅
+- [x] Logo zu klein / SVG-Platzhalter im Footer → Echtes Logo-Bild eingebunden ✅
 
 ---
 

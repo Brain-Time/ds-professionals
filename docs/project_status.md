@@ -1,6 +1,6 @@
 # 📊 D&S Professionals — Projektstatus
 
-**Letzte Aktualisierung:** 22. Mai 2026, 03:19 Uhr
+**Letzte Aktualisierung:** 30. Mai 2026, 01:17 Uhr
 **Entwickler:** Abdourazaki Derman
 **AI-Assistent:** Monica (claude-sonnet-4-6)
 
@@ -23,7 +23,7 @@
 - OS: Linux (Ubuntu/Debian) oder Windows mit WSL
 - Editor: VS Code
 - Node: 20+ LTS
-- Projektpfad: `~/projects/ds-professionals/`
+- Projektpfad: `~/Documents/Projects/ds-professionals/`
 
 ---
 
@@ -106,22 +106,45 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
 
 ## ✅ Schritt 3 — Layout (Navbar, Footer) (ERLEDIGT)
 
-**Datum:** 22. Mai 2026
+**Datum:** 29. Mai 2026
 
 ### Erstellt:
-- [x] `src/components/layout/Navbar.jsx` — Sticky mit Scroll-Shadow, Logo (SVG Besen), Desktop-Links, Active Link Highlighting (useLocation), ThemeToggle, Gold CTA, Mobile Hamburger (Framer Motion Slide-in)
-- [x] `src/components/layout/Footer.jsx` — 3 Spalten (Logo+Text | Navigation+Services | Kontakt Karlsruhe), Copyright, Impressum, Datenschutz, AGB
-- [x] `src/components/layout/Layout.jsx` — Wrapper: Navbar + children + Footer, ScrollToTop bei Route-Wechsel, Page Transitions (Framer Motion Fade)
-- [x] `src/main.jsx` — React 18 createRoot, HelmetProvider + ThemeProvider + BrowserRouter Setup (Snippet)
-- [x] `src/App.jsx` — Layout-Wrapper mit React Router Routes (Snippet)
-- [x] `src/styles/globals.css` — Tailwind v4 Dark Mode Konfiguration (`@custom-variant dark`) (Snippet)
+- [x] `src/components/layout/Navbar.jsx`
+  - Sticky mit Scroll-Shadow
+  - **Echtes Logo-Bild** (`_a.png` Light / `_b.png` Dark) + Firmenname + Subtitle
+  - Desktop-Links mit Active-Link-Highlighting
+  - `useTheme` korrekt aus `@/hooks/useTheme` importiert
+  - ThemeToggle + Gold CTA Button
+  - Mobile Hamburger-Menü
+- [x] `src/components/layout/Footer.jsx`
+  - 3 Spalten: Logo+Text | Navigation+Services | Kontakt Karlsruhe
+  - **Echtes Logo-Bild** (`_b.png`, fix dunkel) statt SVG-Platzhalter
+  - Copyright, Impressum, Datenschutz, AGB
+  - Framer Motion `fadeInUp` Animationen
+- [x] `src/components/layout/Layout.jsx` — Wrapper: Navbar + Outlet + Footer, ScrollToTop, Page Transitions
+- [x] `src/main.jsx` — React 18 createRoot, HelmetProvider + ThemeProvider + BrowserRouter
+- [x] `src/App.jsx` — Layout-Wrapper mit React Router Routes
+
+### Assets:
+| Datei | Verwendung |
+|---|---|
+| `src/assets/D&S PROFESSIONALS_a.png` | Logo Light Mode (500×500px) |
+| `src/assets/D&S PROFESSIONALS_b.png` | Logo Dark Mode + Footer (500×500px) |
+
+### Behobene Fehler (Schritt 3):
+| Fehler | Fix |
+|---|---|
+| `SyntaxError: useTheme not exported from ThemeContext` | Import auf `@/hooks/useTheme` korrigiert |
+| `lucide-react` nicht installiert | `npm install lucide-react` ausgeführt |
+| Logo zu klein / SVG-Platzhalter im Footer | Echtes Logo-Bild eingebunden, Größe `h-9 w-9` (Navbar) / `h-12 w-12` (Footer) |
 
 ### Wichtige Entscheidungen (Schritt 3):
 | Entscheidung | Begründung |
 |---|---|
+| ✅ Logo-Bild + Firmenname nebeneinander | Quadratisches 500×500 PNG braucht Text-Ergänzung |
+| ✅ `_b.png` fix im Footer | Footer hat immer dunklen Hintergrund → kein Theme-Switch nötig |
+| ✅ `_a.png` / `_b.png` in Navbar per Theme | Automatischer Wechsel via `useTheme` |
 | ✅ Sticky Navbar mit `backdrop-blur` | Moderner Look, Lesbarkeit beim Scrollen |
-| ✅ `layoutId="nav-underline"` (Framer Motion) | Smooth Active-Link-Animation |
-| ✅ Body-Scroll-Lock bei mobilem Menü | UX: Verhindert Scrollen hinter dem Menü |
 | ✅ `AnimatePresence mode="wait"` für Page Transitions | Saubere Ein-/Ausblend-Animation |
 | ✅ `flex-col min-h-screen` im Layout | Footer bleibt immer unten (sticky footer) |
 | ✅ `behavior: 'instant'` bei ScrollToTop | Kein sichtbares Scrollen bei Route-Wechsel |
@@ -153,6 +176,9 @@ ds-professionals/
 │   ├── favicon.ico
 │   └── robots.txt
 ├── src/
+│   ├── assets/
+│   │   ├── D&S PROFESSIONALS_a.png   ← ✅ Logo Light (500×500)
+│   │   └── D&S PROFESSIONALS_b.png   ← ✅ Logo Dark  (500×500)
 │   ├── components/
 │   │   ├── layout/
 │   │   │   ├── Layout.jsx          ← ✅ Schritt 3
@@ -218,6 +244,9 @@ ds-professionals/
 | ✅ SVG-Icons inline (kein Icon-Paket) | Keine externe Dependency, animierbar |
 | ✅ `backdrop-blur` in Navbar | Moderner Look, Lesbarkeit beim Scrollen |
 | ✅ Body-Scroll-Lock bei mobilem Menü | UX: Verhindert Scrollen hinter dem Menü |
+| ✅ `lucide-react` installiert | Für Navbar-Icons (Menu, X) — minimaler Einsatz |
+| ✅ Logo als PNG-Bild (500×500) | Echtes Branding statt SVG-Platzhalter |
+| ✅ `useTheme` aus `@/hooks/useTheme` | Hook liegt in hooks/, nicht in ThemeContext |
 
 ---
 
@@ -230,8 +259,9 @@ ds-professionals/
 | Styling | Tailwind CSS | 4 | ✅ |
 | Animationen | Framer Motion | latest | ✅ |
 | Routing | React Router | 6 | ✅ |
-| Formulare | React Hook Form | latest | ✅ |
-| E-Mail | EmailJS | latest | ✅ |
+| Icons | lucide-react | 0.x | ✅ |
+| Formulare | React Hook Form | latest | ⏳ |
+| E-Mail | EmailJS | latest | ⏳ |
 | SEO | React Helmet Async | latest | ✅ |
 | Linting | ESLint | latest | ✅ |
 | Deployment | Vercel + FTP | — | ⏳ |
