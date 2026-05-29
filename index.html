@@ -1,10 +1,50 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ds-professionals</title>
+
+    <!-- ─── SEO Meta Tags ──────────────────────────────────────────────── -->
+    <title>D&S Professionals – Reinigungsdienst Karlsruhe</title>
+    <meta name="description"
+          content="D&S Professionals – Ihr professioneller Reinigungsdienst in Karlsruhe. Industrie-, Büro-, Praxis- und Hallenreinigung. Maßgeschneidert, zuverlässig, fair." />
+    <meta name="keywords"
+          content="Reinigungsdienst Karlsruhe, Industriereinigung, Büroreinigung, Hallenreinigung, Gebäudereinigung" />
+    <meta name="author" content="D&S Professionals" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ds-professionals.de/" />
+
+    <!-- ─── Open Graph (Social Media) ─────────────────────────────────── -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://ds-professionals.de/" />
+    <meta property="og:title"       content="D&S Professionals – Reinigungsdienst Karlsruhe" />
+    <meta property="og:description" content="Professionelle Reinigungsdienstleistungen in Karlsruhe und Umgebung." />
+    <meta property="og:locale"      content="de_DE" />
+
+    <!-- ─── Favicon ───────────────────────────────────────────────────── -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- ─── Dark Mode Flash Prevention ───────────────────────────────── -->
+    <!-- Dieses Script verhindert weißes Aufblitzen beim Laden im Dark Mode -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('ds-theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- ─── Google Fonts: Inter ────────────────────────────────────────── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>
