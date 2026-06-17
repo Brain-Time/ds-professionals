@@ -48,19 +48,18 @@
 ## 🟠 Schritt 3 — Layout (Navbar & Footer) ✅ ERLEDIGT
 
 - [x] `src/components/layout/Navbar.jsx` ✅
-      → Echtes Logo-Bild (`_a.png` Light / `_b.png` Dark) + Firmenname + Subtitle
+      → Logo (SVG Besen + Text + Untertitel)
       → Desktop Navigation Links (Home | Dienstleistungen | Über uns | Kontakt)
-      → `useTheme` korrekt aus `@/hooks/useTheme` importiert
       → `ThemeToggle` integriert
-      → Mobile Hamburger Menu
-      → Active Link Highlighting via `NavLink`
+      → Mobile Hamburger Menu (Framer Motion Slide-in)
+      → Active Link Highlighting via `useLocation` + `layoutId`
       → Sticky + `backdrop-blur` beim Scrollen
       → CTA Button "Angebot anfragen" (Gold)
+      → Body-Scroll-Lock bei geöffnetem Menü
       → Menü schließt bei Route-Wechsel
 
 - [x] `src/components/layout/Footer.jsx` ✅
-      → Echtes Logo-Bild (`_b.png`, fix dunkel) statt SVG-Platzhalter
-      → Slogan „Mehr als nur sauber"
+      → Logo + Slogan „Mehr als nur sauber"
       → 3 Spalten: Logo+Text | Navigation+Services | Kontakt
       → Services Links (alle 6 Dienstleistungen)
       → Kontaktdaten (Adresse, Tel, E-Mail, Öffnungszeiten)
@@ -86,14 +85,78 @@
 - [x] `src/styles/globals.css` (Snippet) ✅
       → Tailwind v4 Dark Mode: `@custom-variant dark`
 
-### Behobene Fehler (Schritt 3):
-- [x] `SyntaxError: useTheme not exported from ThemeContext` → Import auf `@/hooks/useTheme` korrigiert ✅
-- [x] `lucide-react` nicht installiert → `npm install lucide-react` ✅
-- [x] Logo zu klein / SVG-Platzhalter im Footer → Echtes Logo-Bild eingebunden ✅
-
 ---
 
-## 🔵 Schritt 4 — HomePage Sektionen ← **NEXT**
+## 🔵 Schritt 4 — HomePage Sektionen ✅ ERLEDIGT
+
+- [x] `src/hooks/useCountUp.js` ✅
+      → `IntersectionObserver` für Trigger
+      → Easing-Funktion `easeOutQuart`
+      → `requestAnimationFrame` für 60fps Performance
+      → Einmalige Ausführung (once: true)
+      → Konfigurierbare Dauer + Threshold
+
+- [x] `src/data/testimonials.js` ✅
+      → 3 Kundenstimmen (Marcus Weber / Indutec, Sandra Hoffmann / FitLife, Dr. Thomas Keller / Praxis)
+      → Name, Rolle, Firma, Initialen, Rating, Text, Service, Avatar-Farbe
+
+- [x] `src/components/sections/HeroSection.jsx` ✅
+      → Fullscreen Hero (min-h-screen)
+      → Gradient: #0D1B2A → #1B4FD8
+      → H1: „Professionelle Reinigung in Karlsruhe"
+      → Slogan + Beschreibung + Referenz-Hinweis
+      → CTA 1: „Angebot anfragen" (Gold)
+      → CTA 2: „Leistungen entdecken" (Outline)
+      → Trust-Bar: 10+ Jahre | 200+ Kunden | Versichert | ⭐ 4.9
+      → Framer Motion fadeInUp mit Stagger
+      → Scroll-Down Indicator (animiert)
+      → Dekorative Blur-Kreise (animiert)
+
+- [x] `src/components/sections/ServicesPreview.jsx` ✅
+      → 6 Service-Karten aus services.js
+      → Icon + Titel + Kurzbeschreibung + Link
+      → Hover: leichtes Heben (Framer Motion)
+      → Staggered Fade-in via `useInView`
+      → Responsive Grid: 1 → 2 → 3 Spalten
+      → „Alle Dienstleistungen ansehen" Button
+      → Hover-Glow Linie oben auf Karte
+
+- [x] `src/components/sections/WhyUs.jsx` ✅
+      → 4 USPs: Erfahrung, Zuverlässigkeit, Flexibilität, Faire Preise
+      → Referenz-Badges: Indutec · Iwago · Wisag · u.v.m.
+      → Zweispaltiges Layout: Text links | USP-Grid rechts
+      → CTA „Mehr über uns erfahren"
+      → Framer Motion: Links slideIn + Rechts staggered
+
+- [x] `src/components/sections/StatsCounter.jsx` ✅
+      → 4 animierte Kennzahlen aus stats.js
+      → `useCountUp` Hook integriert
+      → Dunkler Gradient-Hintergrund (#0D1B2A)
+      → Suffix in Gold (#C9A84C)
+      → Vertikale Trennlinien zwischen Items (Desktop)
+      → Dekoratives Hintergrundmuster + Blur-Akzent
+
+- [x] `src/components/sections/Testimonials.jsx` ✅
+      → 3 Testimonial-Karten aus testimonials.js
+      → Avatar (Initialen + Hintergrundfarbe)
+      → StarRating Komponente (SVG, Gold)
+      → Name, Rolle, Firma, Service-Badge
+      → QuoteIcon (dekorativ)
+      → Gesamt-Bewertungs-Badge (4.9 / 5)
+      → Staggered Fade-in via `useInView`
+
+- [x] `src/components/sections/CTASection.jsx` ✅
+      → „Bereit für professionelle Sauberkeit?"
+      → Gold CTA Button „Jetzt Angebot anfragen"
+      → Dunkelblauer Kontrasthintergrund
+      → Framer Motion Animationen
+
+### Noch offen aus Schritt 4:
+- [ ] `src/components/ui/Button.jsx`
+      → Varianten: `primary` | `secondary` | `gold` | `outline`
+      → Größen: `sm` | `md` | `lg`
+      → `as` Prop (Link vs Button)
+      → Framer Motion Hover-Animation
 
 - [ ] `src/components/ui/SectionWrapper.jsx`
       → Framer Motion `whileInView` Scroll-Fade
@@ -101,66 +164,29 @@
       → Konfigurierbare Delay-Prop
       → Wiederverwendbar für alle Sektionen
 
-- [ ] `src/components/ui/Button.jsx`
-      → Varianten: `primary` | `secondary` | `gold` | `outline`
-      → Größen: `sm` | `md` | `lg`
-      → `as` Prop (Link vs Button)
-      → Framer Motion Hover-Animation
-
-- [ ] `src/components/sections/HeroSection.jsx`
-      → Fullscreen Hero (min-h-screen)
-      → Headline + Subline + 2 CTAs
-      → Hintergrundbild oder Gradient
-      → Framer Motion Entrance Animation
-      → Scroll-Down Indicator
-
-- [ ] `src/components/sections/ServicesPreview.jsx`
-      → 7 Service-Cards im Grid (3-2-1 responsive)
-      → `ServiceCard` Komponente nutzen
-      → "Alle Services" Link
-
-- [ ] `src/components/ui/ServiceCard.jsx`
-      → Icon + Titel + Kurzbeschreibung
-      → Hover-Animation (Framer Motion)
-      → Link zu `/dienstleistungen/:slug`
-      → Dark Mode kompatibel
-
-- [ ] `src/components/sections/WhyUsSection.jsx`
-      → 4 USPs mit Icons
-      → Maßgeschneidert · Zuverlässig · Flexibel · Faire Preise
-      → Alternating Layout (Text/Icon)
-
-- [ ] `src/components/sections/StatsSection.jsx`
-      → 4 Kennzahlen mit Counter-Animation
-      → `useCountUp` Hook nutzen
-      → Trigger bei Viewport-Eintritt
-
-- [ ] `src/hooks/useCountUp.js`
-      → `IntersectionObserver` für Trigger
-      → Easing-Funktion (ease-out)
-      → `requestAnimationFrame` für Performance
-
-- [ ] `src/components/sections/TestimonialsSection.jsx`
-      → 3 Kundenstimmen
-      → `src/data/testimonials.js` anlegen
-      → Karten-Layout mit Sternebewertung
-
-- [ ] `src/components/sections/CtaSection.jsx`
-      → "Jetzt kostenloses Angebot anfordern"
-      → Gold CTA Button
-      → Kontrasthintergrund (Dunkelblau)
-      → Framer Motion Pulse-Animation
-
-- [ ] `src/data/testimonials.js`
-      → 3 Kundenstimmen Daten
-
 - [ ] `src/pages/HomePage.jsx`
       → Alle Sektionen zusammengesetzt
       → React Helmet (SEO Meta-Tags)
 
 ---
 
-## 🟣 Schritt 5 — ServicesPage & ServiceDetail
+## 🟣 Schritt 5 — ServicesPage & ServiceDetail ← **NEXT**
+
+- [ ] `src/components/ui/Button.jsx`
+      → Varianten: `primary` | `secondary` | `gold` | `outline`
+      → Größen: `sm` | `md` | `lg`
+      → `as` Prop (Link vs Button)
+      → Framer Motion Hover-Animation
+
+- [ ] `src/components/ui/SectionWrapper.jsx`
+      → Framer Motion `whileInView` Scroll-Fade
+      → `viewport={{ once: true }}`
+      → Konfigurierbare Delay-Prop
+      → Wiederverwendbar für alle Sektionen
+
+- [ ] `src/pages/HomePage.jsx`
+      → Alle Sektionen zusammengesetzt
+      → React Helmet (SEO Meta-Tags)
 
 - [ ] `src/pages/ServicesPage.jsx`
       → Hero-Bereich mit Titel

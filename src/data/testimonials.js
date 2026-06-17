@@ -1,53 +1,54 @@
 /**
- * Kundenbewertungen für D&S Professionals
- * B2B-Kunden aus Karlsruhe und Umgebung
- * Authentische Testimonials mit Fokus auf Zuverlässigkeit & Qualität
+ * testimonials.js
+ * ─────────────────────────────────────────────────────────────
+ * Kundenstimmen für D&S Professionals
+ * Wird in der Testimonials-Sektion der HomePage verwendet
+ * ─────────────────────────────────────────────────────────────
  */
 
-export const testimonials = [
+const testimonials = [
   {
     id: 1,
-    name: "Michael Hartmann",
-    company: "TechPark Karlsruhe GmbH",
-    role: "Facility Manager",
-    text: "Seit drei Jahren betreut D&S unsere Büroflächen mit 800m². Die Zuverlässigkeit ist beeindruckend – selbst bei kurzfristigen Sonderwünschen finden wir immer eine Lösung. Absolute Empfehlung für Gewerbekunden.",
+    name: 'Marcus Weber',
+    role: 'Facility Manager',
+    company: 'Indutec GmbH',
+    initials: 'MW',
     rating: 5,
-    avatar: "MH"
+    text:
+      'D&S Professionals reinigt unsere Produktionshallen seit über zwei Jahren. ' +
+      'Die Zuverlässigkeit und Qualität sind hervorragend – pünktlich, gründlich ' +
+      'und immer flexibel bei kurzfristigen Anfragen. Absolute Empfehlung!',
+    service: 'Industriereinigung',
+    color: '#1B4FD8', // Hintergrundfarbe für Avatar
   },
   {
     id: 2,
-    name: "Sandra Müller",
-    company: "FitZone Karlsruhe",
-    role: "Geschäftsführerin",
-    text: "Hygiene ist in unserem Fitnessstudio das A und O. D&S reinigt täglich alle Geräte, Duschen und Umkleiden nach höchsten Standards. Unsere Mitglieder merken den Unterschied – das zahlt sich aus.",
+    name: 'Sandra Hoffmann',
+    role: 'Geschäftsführerin',
+    company: 'FitLife Karlsruhe',
+    initials: 'SH',
     rating: 5,
-    avatar: "SM"
+    text:
+      'Unsere Mitglieder loben regelmäßig die Sauberkeit im Studio. Das Team von ' +
+      'D&S arbeitet früh morgens, bevor der Betrieb beginnt – diskret, effizient ' +
+      'und immer mit einem Lächeln. Wir sind rundum zufrieden.',
+    service: 'Fitnessstudio-Reinigung',
+    color: '#0D1B2A',
   },
   {
     id: 3,
-    name: "Dr. Thomas Weber",
-    company: "Praxis am Marktplatz",
-    role: "Facharzt für Innere Medizin",
-    text: "In einer medizinischen Praxis gelten besondere Anforderungen. Das Team arbeitet diskret, gründlich und kennt sich mit Desinfektionsprotokollen bestens aus. Wir fühlen uns sehr gut betreut.",
+    name: 'Dr. Thomas Keller',
+    role: 'Praxisinhaber',
+    company: 'Hausarztpraxis Keller',
+    initials: 'TK',
     rating: 5,
-    avatar: "TW"
+    text:
+      'In einer Arztpraxis ist Hygiene das A und O. D&S Professionals erfüllt ' +
+      'alle Anforderungen an medizinische Reinigung und Desinfektion. ' +
+      'Professionell, diskret und immer zuverlässig. Ich kann sie uneingeschränkt empfehlen.',
+    service: 'Praxisreinigung',
+    color: '#C9A84C',
   },
-  {
-    id: 4,
-    name: "Jürgen Schneider",
-    company: "Logistikzentrum Südwest",
-    role: "Betriebsleiter",
-    text: "Unsere 3.500m² Lagerhalle wird wöchentlich professionell gereinigt. Faire Preise, flexible Zeiten und ein Team, das mitdenkt. Nach schlechten Erfahrungen mit anderen Anbietern endlich der richtige Partner.",
-    rating: 5,
-    avatar: "JS"
-  },
-  {
-    id: 5,
-    name: "Petra Hoffmann",
-    company: "Hausverwaltung Hoffmann & Partner",
-    role: "Geschäftsführerin",
-    text: "Wir beauftragen D&S für die Treppenhausreinigung in 12 Wohnanlagen. Pünktlich, sauber, freundlich – und die Mieter sind zufrieden. Das ist bei Dienstleistern heute keine Selbstverständlichkeit mehr.",
-    rating: 5,
-    avatar: "PH"
-  }
 ];
+
+export default testimonials;

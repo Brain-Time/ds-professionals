@@ -1,28 +1,36 @@
 /**
  * Footer.jsx
+ * ─────────────────────────────────────────────────────────────
+ * Footer für D&S Professionals
+ *
+ * Layout: 3 Spalten (Desktop) / Gestapelt (Mobile)
+ *   1. Logo + Slogan + Kurzbeschreibung
+ *   2. Schnelllinks (Navigation)
+ *   3. Kontaktdaten Karlsruhe
+ *
+ * Unten: Copyright · Impressum · Datenschutz · AGB
+ * ─────────────────────────────────────────────────────────────
  */
 
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import logoDunkel from '@/assets/D&S PROFESSIONALS_b.png';
-
 // ── Konfiguration ──────────────────────────────────────────────
 
 const QUICK_LINKS = [
-  { label: 'Home',             to: '/'                 },
+  { label: 'Home',             to: '/'                },
   { label: 'Dienstleistungen', to: '/dienstleistungen' },
   { label: 'Über uns',         to: '/ueber-uns'        },
   { label: 'Kontakt',          to: '/kontakt'          },
 ];
 
 const SERVICE_LINKS = [
-  { label: 'Industriereinigung',      to: '/dienstleistungen/industriereinigung'      },
-  { label: 'Büroreinigung',           to: '/dienstleistungen/bueroreinigung'           },
-  { label: 'Hallenreinigung',         to: '/dienstleistungen/hallenreinigung'          },
-  { label: 'Fitnessstudio-Reinigung', to: '/dienstleistungen/fitnessstudio-reinigung' },
-  { label: 'Praxisreinigung',         to: '/dienstleistungen/praxisreinigung'          },
-  { label: 'Treppenhausreinigung',    to: '/dienstleistungen/treppenhausreinigung'     },
+  { label: 'Industriereinigung',       to: '/dienstleistungen/industriereinigung'       },
+  { label: 'Büroreinigung',            to: '/dienstleistungen/bueroreinigung'            },
+  { label: 'Hallenreinigung',          to: '/dienstleistungen/hallenreinigung'           },
+  { label: 'Fitnessstudio-Reinigung',  to: '/dienstleistungen/fitnessstudio-reinigung'  },
+  { label: 'Praxisreinigung',          to: '/dienstleistungen/praxisreinigung'           },
+  { label: 'Treppenhausreinigung',     to: '/dienstleistungen/treppenhausreinigung'      },
 ];
 
 const LEGAL_LINKS = [
@@ -33,7 +41,27 @@ const LEGAL_LINKS = [
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-// ── Icons ──────────────────────────────────────────────────────
+// ── SVG Icons ──────────────────────────────────────────────────
+
+const BroomIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-[#C9A84C]"
+    aria-hidden="true"
+  >
+    <path d="M9 3L5 7l10 10 4-4L9 3z" />
+    <path d="M5 7L3 21l7-4" />
+    <path d="M15 17l4 4" />
+  </svg>
+);
 
 const PhoneIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
@@ -100,16 +128,12 @@ const Footer = () => {
             {/* Logo */}
             <Link
               to="/"
-              className="inline-flex items-center gap-3 mb-5 group"
+              className="inline-flex items-center gap-2.5 mb-5 group"
               aria-label="D&S Professionals – Startseite"
             >
-              <img
-                src={logoDunkel}
-                alt="D&S Professionals Logo"
-                className="h-12 w-12 object-contain"
-              />
+              <BroomIcon />
               <div className="flex flex-col leading-tight">
-                <span className="text-base font-semibold text-white tracking-tight">
+                <span className="text-base font-700 text-white tracking-tight">
                   D&amp;S Professionals
                 </span>
                 <span className="text-[10px] text-slate-400 tracking-widest uppercase">
@@ -119,7 +143,7 @@ const Footer = () => {
             </Link>
 
             {/* Slogan */}
-            <p className="text-[#C9A84C] text-sm mb-3 italic font-medium">
+            <p className="text-[#C9A84C] font-500 text-sm mb-3 italic">
               „Mehr als nur sauber"
             </p>
 
@@ -145,7 +169,8 @@ const Footer = () => {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
+            {/* Schnelllinks */}
+            <h3 className="text-white font-700 text-sm uppercase tracking-wider mb-5">
               Navigation
             </h3>
             <ul className="space-y-2.5 mb-8" role="list">
@@ -153,16 +178,24 @@ const Footer = () => {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-sm text-slate-400 hover:text-[#1B4FD8] transition-colors duration-200 flex items-center gap-2 group"
+                    className={[
+                      'text-sm text-slate-400 hover:text-[#1B4FD8]',
+                      'transition-colors duration-200',
+                      'flex items-center gap-2 group',
+                    ].join(' ')}
                   >
-                    <span className="w-1 h-1 rounded-full bg-[#1B4FD8] opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden="true" />
+                    <span
+                      className="w-1 h-1 rounded-full bg-[#1B4FD8] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      aria-hidden="true"
+                    />
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
 
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
+            {/* Dienstleistungen */}
+            <h3 className="text-white font-700 text-sm uppercase tracking-wider mb-5">
               Dienstleistungen
             </h3>
             <ul className="space-y-2.5" role="list">
@@ -170,9 +203,16 @@ const Footer = () => {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-sm text-slate-400 hover:text-[#1B4FD8] transition-colors duration-200 flex items-center gap-2 group"
+                    className={[
+                      'text-sm text-slate-400 hover:text-[#1B4FD8]',
+                      'transition-colors duration-200',
+                      'flex items-center gap-2 group',
+                    ].join(' ')}
                   >
-                    <span className="w-1 h-1 rounded-full bg-[#1B4FD8] opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden="true" />
+                    <span
+                      className="w-1 h-1 rounded-full bg-[#1B4FD8] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      aria-hidden="true"
+                    />
                     {link.label}
                   </Link>
                 </li>
@@ -188,35 +228,54 @@ const Footer = () => {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
+            <h3 className="text-white font-700 text-sm uppercase tracking-wider mb-5">
               Kontakt
             </h3>
 
             <ul className="space-y-4" role="list">
+              {/* Adresse */}
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 text-[#1B4FD8] flex-shrink-0"><MapPinIcon /></span>
+                <span className="mt-0.5 text-[#1B4FD8] flex-shrink-0">
+                  <MapPinIcon />
+                </span>
                 <address className="not-italic text-sm text-slate-400 leading-relaxed">
                   Karlsruhe und Umgebung<br />
                   Baden-Württemberg, Deutschland
                 </address>
               </li>
+
+              {/* Telefon */}
               <li className="flex items-center gap-3">
-                <span className="text-[#1B4FD8] flex-shrink-0"><PhoneIcon /></span>
-                <a href="tel:+4972112345678"
+                <span className="text-[#1B4FD8] flex-shrink-0">
+                  <PhoneIcon />
+                </span>
+                <a
+                  href="tel:+4972112345678"
                   className="text-sm text-slate-400 hover:text-white transition-colors duration-200"
-                  aria-label="Telefonnummer anrufen">
+                  aria-label="Telefonnummer anrufen"
+                >
                   +49 (0) 721 – Auf Anfrage
                 </a>
               </li>
+
+              {/* E-Mail */}
               <li className="flex items-center gap-3">
-                <span className="text-[#1B4FD8] flex-shrink-0"><MailIcon /></span>
-                <a href="mailto:info@ds-professionals.de"
-                  className="text-sm text-slate-400 hover:text-white transition-colors duration-200 break-all">
+                <span className="text-[#1B4FD8] flex-shrink-0">
+                  <MailIcon />
+                </span>
+                <a
+                  href="mailto:info@ds-professionals.de"
+                  className="text-sm text-slate-400 hover:text-white transition-colors duration-200 break-all"
+                >
                   info@ds-professionals.de
                 </a>
               </li>
+
+              {/* Öffnungszeiten */}
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 text-[#1B4FD8] flex-shrink-0"><ClockIcon /></span>
+                <span className="mt-0.5 text-[#1B4FD8] flex-shrink-0">
+                  <ClockIcon />
+                </span>
                 <div className="text-sm text-slate-400 leading-relaxed">
                   <p>Mo – Fr: 07:00 – 18:00 Uhr</p>
                   <p>Sa: 08:00 – 14:00 Uhr</p>
@@ -226,15 +285,34 @@ const Footer = () => {
             </ul>
 
             {/* CTA */}
-            <motion.div className="mt-8" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <motion.div
+              className="mt-8"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
               <Link
                 to="/kontakt"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#C9A84C] hover:bg-[#b8943d] text-white text-sm font-semibold transition-colors duration-200 shadow-lg shadow-[#C9A84C]/20"
+                className={[
+                  'inline-flex items-center gap-2 px-5 py-2.5 rounded-lg',
+                  'bg-[#C9A84C] hover:bg-[#b8943d]',
+                  'text-white text-sm font-700',
+                  'transition-colors duration-200',
+                  'shadow-lg shadow-[#C9A84C]/20',
+                ].join(' ')}
               >
                 Kostenloses Angebot
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                  aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </Link>
@@ -249,18 +327,25 @@ const Footer = () => {
       {/* ── Copyright & Legal ────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+
+          {/* Copyright */}
           <p className="text-xs text-slate-500 text-center sm:text-left">
             © {CURRENT_YEAR} D&amp;S Professionals – Reinigungsdienst Karlsruhe.
             Alle Rechte vorbehalten.
           </p>
+
+          {/* Legal Links */}
           <nav aria-label="Rechtliche Links">
             <ul className="flex items-center gap-4 sm:gap-6" role="list">
               {LEGAL_LINKS.map((link, i) => (
                 <li key={link.to} className="flex items-center gap-4 sm:gap-6">
-                  <Link to={link.to}
-                    className="text-xs text-slate-500 hover:text-slate-300 transition-colors duration-200">
+                  <Link
+                    to={link.to}
+                    className="text-xs text-slate-500 hover:text-slate-300 transition-colors duration-200"
+                  >
                     {link.label}
                   </Link>
+                  {/* Trennpunkt zwischen Links */}
                   {i < LEGAL_LINKS.length - 1 && (
                     <span className="text-slate-700" aria-hidden="true">·</span>
                   )}
