@@ -5,16 +5,68 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/)
 
 ---
 
-## [Unreleased] — Schritt 5: UI Components & Pages
+## [Unreleased] — Schritt 6: AboutPage & ContactPage
 
 > Nächster Schritt.
 
 ### Geplant
-- `src/components/ui/Button.jsx` — Varianten: primary | secondary | gold | outline, Größen: sm | md | lg, `as` Prop, Framer Motion
-- `src/components/ui/SectionWrapper.jsx` — Framer Motion `whileInView` Scroll-Fade, Delay-Prop
-- `src/pages/HomePage.jsx` — Alle Sektionen zusammengesetzt + React Helmet SEO
-- `src/pages/ServicesPage.jsx` — Hero + alle 7 Services als Grid + React Helmet SEO
-- `src/pages/ServiceDetailPage.jsx` — Dynamisch via `useParams()` + `getServiceBySlug()`, 404-Handling, Breadcrumb, React Helmet dynamisch
+- `src/pages/AboutPage.jsx` — Unternehmensgeschichte, Referenzen, Werte & Versprechen, Team (optional)
+- `src/pages/ContactPage.jsx` — Kontaktformular (React Hook Form), EmailJS, Karte, Öffnungszeiten
+- `src/hooks/useContactForm.js` — React Hook Form Logik, EmailJS `send()`, Loading/Success/Error States
+
+---
+
+## [0.5.0] — 2026-06-18 · Schritt 5: UI Components & Pages ✅
+
+### Added
+- `src/components/ui/Button.jsx` (überarbeitet)
+  → Varianten: `gold` | `primary` | `outline` | `ghost`
+  → Größen: `sm` | `md` | `lg`
+  → `as` Prop (render als `<button>` oder `<Link>`)
+  → Loading Spinner (SVG, `animate-spin`)
+  → `disabled` + `aria-disabled` Support
+  → Tailwind-Klassen direkt (kein CSS-Var Overhead)
+  → Alle Kommentare auf Englisch
+
+- `src/components/ui/SectionWrapper.jsx` (neu)
+  → Framer Motion `whileInView` Scroll-Fade + Y-Offset
+  → `viewport={{ once: true, margin: '-80px' }}`
+  → Konfigurierbare Props: `delay` | `duration` | `yOffset`
+  → Wiederverwendbar für alle Sektionen
+
+- `src/pages/HomePage.jsx` (aktualisiert)
+  → React Helmet: `<title>` + `meta description` + OG Tags + `robots`
+  → Alle 6 Sektionen zusammengesetzt
+
+- `src/pages/ServicesPage.jsx` (neu)
+  → Hero mit Breadcrumb + Titel + Untertitel
+  → Alle 7 Services als Grid (1 → 2 → 3 Spalten)
+  → `ServiceCard`: Accent-Bar + Icon + Titel + `shortDesc` + 3 Features + Link
+  → Staggered Fade-in via `whileInView` + `custom` Index
+  → CTA Strip: „Nicht das Richtige gefunden?" + 2 Buttons (Gold + Outline)
+  → React Helmet SEO
+
+- `src/pages/ServiceDetailPage.jsx` (neu)
+  → Dynamisch via `useParams()` + `getServiceBySlug()`
+  → 404-Handling: `<Navigate to="/dienstleistungen" replace />`
+  → Hero: Icon-Badge + Breadcrumb + Titel + `shortDesc`
+  → Beschreibung (`longDesc`) + vollständige Features-Checkliste (animiert)
+  → Sticky CTA-Karte (rechts): Trust-Points + 2 Buttons
+  → Related Services: 3 weitere Services (ohne aktuellen)
+  → React Helmet: dynamische SEO-Tags pro Service (`metaTitle`, `metaDesc`)
+
+- `src/App.jsx` (aktualisiert)
+  → `ServicesPage` + `ServiceDetailPage` eingebunden (echte Pages)
+  → `ComingSoon` Placeholder für `AboutPage` + `ContactPage` (Schritt 6)
+  → `font-extrabold` statt `font-700` Fix
+
+### Entscheidungen (Schritt 5)
+- `whileInView` + `custom` Index für Stagger → kein separater `useInView` Hook nötig
+- `<Navigate replace />` bei 404-Slug → kein Eintrag in Browser-History
+- Sticky CTA-Karte auf `ServiceDetailPage` → Conversion-Optimierung, immer sichtbar
+- Related Services (max. 3) → Cross-Selling ohne Überwältigung
+- Tailwind-Klassen direkt in `Button.jsx` → kein CSS-Var Overhead, bessere Lesbarkeit
+- `margin: '-80px'` in `viewport` → Animation startet bevor Element vollständig sichtbar
 
 ---
 
@@ -295,4 +347,4 @@ npm install lucide-react
 - `@theme` Direktive statt `tailwind.config` für Design-Tokens
 - CSS Custom Properties für Dark/Light Mode → kein Theme-Flash
 - Code-Splitting für Framer Motion (großes Bundle → eigener Chunk)
-- Emoji-Icons für Services → keine externe Icon-Library nötig
+- SEO-Daten direkt in `services.js` → alles an einem Ort, kein Overhead

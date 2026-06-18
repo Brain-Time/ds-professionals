@@ -1,6 +1,6 @@
 # 📊 D&S Professionals — Projektstatus
 
-**Letzte Aktualisierung:** 18. Juni 2026, 02:17 Uhr
+**Letzte Aktualisierung:** 18. Juni 2026, 02:42 Uhr
 **Entwickler:** Abdourazaki Derman
 **AI-Assistent:** Monica (claude-sonnet-4-6)
 
@@ -50,8 +50,8 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
 | **Schritt 2** | Design-System & Theme | ✅ **ERLEDIGT** |
 | **Schritt 3** | Layout (Navbar, Footer) | ✅ **ERLEDIGT** |
 | **Schritt 4** | HomePage Sektionen | ✅ **ERLEDIGT** |
-| **Schritt 5** | ServicesPage & ServiceDetail | ⏳ **NEXT** |
-| **Schritt 6** | AboutPage & ContactPage | ❌ Offen |
+| **Schritt 5** | ServicesPage & ServiceDetail | ✅ **ERLEDIGT** |
+| **Schritt 6** | AboutPage & ContactPage | ⏳ **NEXT** |
 | **Schritt 7** | Animationen & Polish | ❌ Offen |
 | **Schritt 8** | SEO & Performance | ❌ Offen |
 | **Schritt 9** | Review & Deploy | ❌ Offen |
@@ -122,14 +122,13 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
       → Body-Scroll-Lock bei geöffnetem Menü
       → Menü schließt bei Route-Wechsel
       → Alle Kommentare auf Englisch
-      → Keine `font-700/800/500/400` — korrekte Tailwind-Klassen
 
 - [x] `src/components/layout/Footer.jsx` ✅
       → Logo: echtes Bild (`_a.png` weiß/gold) + Divider + Text + Untertitel
       → Footer immer dunkel → immer `_a.png` (kein Theme-Swap nötig)
       → Slogan „Mehr als nur sauber"
       → 3 Spalten: Logo+Text | Navigation+Services | Kontakt
-      → Services Links (alle 6 Dienstleistungen)
+      → Services Links (alle 7 Dienstleistungen)
       → Kontaktdaten (Adresse, Tel, E-Mail, Öffnungszeiten)
       → Copyright + Jahr (dynamisch)
       → Legal Links: Impressum · Datenschutz · AGB
@@ -150,6 +149,7 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
 
 - [x] `src/App.jsx` ✅
       → `Layout`-Wrapper mit React Router `<Routes>`
+      → Echte Pages eingebunden (Schritt 5 aktualisiert)
 
 - [x] `src/styles/globals.css` ✅
       → Tailwind v4 Dark Mode: `@custom-variant dark`
@@ -172,17 +172,17 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
 
 ## ✅ Schritt 4 — HomePage Sektionen (ERLEDIGT)
 
-**Datum:** 22. Mai 2026
+**Datum:** 18. Juni 2026
 
 ### Erstellt:
 - [x] `src/hooks/useCountUp.js` — IntersectionObserver Trigger, easeOutQuart Kurve, requestAnimationFrame (60fps), einmalige Ausführung, konfigurierbare Dauer + Threshold
 - [x] `src/data/testimonials.js` — 3 Kundenstimmen (Marcus Weber/Indutec, Sandra Hoffmann/FitLife, Dr. Thomas Keller/Praxis), mit Initialen, Rating, Service, Avatar-Farbe
 - [x] `src/components/sections/HeroSection.jsx` — Fullscreen, Gradient #0D1B2A→#1B4FD8, H1, Slogan, 2 CTAs (Gold + Outline), Trust-Bar, fadeInUp Stagger, Scroll-Indicator, Blur-Dekorationen
 - [x] `src/components/sections/ServicesPreview.jsx` — 6 Service-Karten, Hover-Heben, Stagger via useInView, Responsive Grid 1→2→3, „Alle ansehen" Button
-- [x] `src/components/sections/WhyUs.jsx` — 4 USPs, Referenz-Badges (Indutec/Iwago/Wisag), 2-Spalten-Layout, CTA „Mehr über uns"
-- [x] `src/components/sections/StatsCounter.jsx` — 4 Kennzahlen aus stats.js, useCountUp integriert, dunkler Gradient-Hintergrund, Gold-Suffix, Trennlinien
-- [x] `src/components/sections/Testimonials.jsx` — 3 Karten, Initialen-Avatar, StarRating (SVG), QuoteIcon, Service-Badge, Gesamt-Bewertungs-Badge
-- [x] `src/components/sections/CTASection.jsx` ✅
+- [x] `src/components/sections/WhyUsSection.jsx` — 4 USPs, Referenz-Badges (Indutec/Iwago/Wisag), 2-Spalten-Layout, CTA „Mehr über uns"
+- [x] `src/components/sections/StatsSection.jsx` — 4 Kennzahlen aus stats.js, useCountUp integriert, dunkler Gradient-Hintergrund, Gold-Suffix, Trennlinien
+- [x] `src/components/sections/TestimonialsSection.jsx` — 3 Karten, Initialen-Avatar, StarRating (SVG), QuoteIcon, Service-Badge, Gesamt-Bewertungs-Badge
+- [x] `src/components/sections/CtaSection.jsx` ✅
       → „Bereit für professionelle Sauberkeit?"
       → Gold CTA Button „Jetzt Angebot anfragen"
       → Sekundärer Button „Direkt anrufen" (tel: Link)
@@ -190,11 +190,6 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
       → Dunkelblauer Kontrasthintergrund + Blur-Dekor
       → Framer Motion staggered Animationen via `useInView`
       → Alle Kommentare auf Englisch
-
-### Noch ausstehend (in Schritt 5 erledigen):
-- [ ] `src/components/ui/Button.jsx`
-- [ ] `src/components/ui/SectionWrapper.jsx`
-- [ ] `src/pages/HomePage.jsx`
 
 ### Wichtige Entscheidungen (Schritt 4):
 | Entscheidung | Begründung |
@@ -208,42 +203,67 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
 
 ---
 
-## ⏳ Schritt 5 — UI Components & Pages (NEXT)
+## ✅ Schritt 5 — UI Components & Pages (ERLEDIGT)
 
-**Geplante Dateien:**
-- [ ] `src/components/ui/Button.jsx`
-      → Varianten: `primary` | `secondary` | `gold` | `outline`
+**Datum:** 18. Juni 2026
+
+### Erstellt:
+- [x] `src/components/ui/Button.jsx` ✅
+      → Varianten: `gold` | `primary` | `outline` | `ghost`
       → Größen: `sm` | `md` | `lg`
-      → `as` Prop (Link vs Button)
-      → Framer Motion Hover-Animation
+      → `as` Prop (render als `<button>` oder `<Link>`)
+      → Loading Spinner (SVG, `animate-spin`)
+      → `disabled` + `aria-disabled` Support
+      → Tailwind-Klassen direkt (kein CSS-Var Overhead)
+      → Alle Kommentare auf Englisch
 
-- [ ] `src/components/ui/SectionWrapper.jsx`
-      → Framer Motion `whileInView` Scroll-Fade
-      → `viewport={{ once: true }}`
-      → Konfigurierbare Delay-Prop
+- [x] `src/components/ui/SectionWrapper.jsx` ✅
+      → Framer Motion `whileInView` Scroll-Fade + Y-Offset
+      → `viewport={{ once: true, margin: '-80px' }}`
+      → Konfigurierbare Props: `delay` | `duration` | `yOffset`
       → Wiederverwendbar für alle Sektionen
 
-- [ ] `src/pages/HomePage.jsx`
-      → Alle Sektionen zusammengesetzt
-      → React Helmet SEO Meta-Tags
+- [x] `src/pages/HomePage.jsx` ✅
+      → Alle 6 Sektionen zusammengesetzt
+      → React Helmet: `<title>` + `meta description` + OG Tags + `robots`
 
-- [ ] `src/pages/ServicesPage.jsx`
-      → Hero-Bereich mit Titel
-      → Alle 7 Services als Grid
+- [x] `src/pages/ServicesPage.jsx` ✅
+      → Hero mit Breadcrumb + Titel + Untertitel
+      → Alle 7 Services als Grid (1 → 2 → 3 Spalten)
+      → `ServiceCard`: Accent-Bar + Icon + Titel + `shortDesc` + 3 Features + Link
+      → Staggered Fade-in via `whileInView` + `custom` Index
+      → CTA Strip: „Nicht das Richtige gefunden?" + 2 Buttons (Gold + Outline)
       → React Helmet SEO
 
-- [ ] `src/pages/ServiceDetailPage.jsx`
+- [x] `src/pages/ServiceDetailPage.jsx` ✅
       → Dynamisch via `useParams()` + `getServiceBySlug()`
-      → 404-Handling wenn Slug nicht gefunden
-      → Hero + Beschreibung + Features-Liste
-      → CTA Bereich
-      → Breadcrumb Navigation
-      → React Helmet (dynamische SEO-Tags)
+      → 404-Handling: `<Navigate to="/dienstleistungen" replace />`
+      → Hero: Icon-Badge + Breadcrumb + Titel + `shortDesc`
+      → Beschreibung (`longDesc`) + vollständige Features-Checkliste (animiert)
+      → Sticky CTA-Karte (rechts): Trust-Points + 2 Buttons
+      → Related Services: 3 weitere Services (ohne aktuellen)
+      → React Helmet: dynamische SEO-Tags pro Service (`metaTitle`, `metaDesc`)
+
+- [x] `src/App.jsx` ✅ (aktualisiert)
+      → `ServicesPage` + `ServiceDetailPage` eingebunden
+      → `ComingSoon` Placeholder für `AboutPage` + `ContactPage`
+      → `font-extrabold` statt `font-700` Fix
+
+### Wichtige Entscheidungen (Schritt 5):
+| Entscheidung | Begründung |
+|---|---|
+| ✅ `whileInView` + `custom` Index für Stagger | Kein separater `useInView` Hook nötig |
+| ✅ `<Navigate replace />` bei 404-Slug | Kein Eintrag in Browser-History |
+| ✅ Sticky CTA-Karte auf `ServiceDetailPage` | Conversion-Optimierung, immer sichtbar |
+| ✅ Related Services (max. 3) | Cross-Selling ohne Überwältigung |
+| ✅ Tailwind-Klassen direkt in `Button.jsx` | Kein CSS-Var Overhead, bessere Lesbarkeit |
+| ✅ `margin: '-80px'` in `viewport` | Animation startet bevor Element vollständig sichtbar |
 
 ---
 
-## ⚫ Schritt 6 — AboutPage & ContactPage
+## ⏳ Schritt 6 — AboutPage & ContactPage (NEXT)
 
+### Geplante Dateien:
 - [ ] `src/pages/AboutPage.jsx`
       → Unternehmensgeschichte
       → Referenzen (Indutec, Iwago, Wisag)
@@ -340,7 +360,7 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
 
 ---
 
-## 🏗️ Dateistruktur (Zielzustand)
+## 🏗️ Dateistruktur (aktueller Stand)
 
 ```
 ds-professionals/
@@ -349,52 +369,55 @@ ds-professionals/
 │   └── robots.txt
 ├── src/
 │   ├── assets/
-│   │   ├── D&S PROFESSIONALS_a.png   ← weiß/gold (dunkel)
-│   │   ├── D&S PROFESSIONALS_b.png   ← schwarz/gold (hell)
-│   │   ├── hero.png
-│   │   └── images/
+│   │   ├── D&S PROFESSIONALS_a.png   ← weiß/gold (Navbar Dark + Footer)  ✅
+│   │   └── D&S PROFESSIONALS_b.png   ← schwarz/gold (Navbar Light)        ✅
 │   ├── components/
 │   │   ├── layout/
-│   │   │   ├── Layout.jsx          ← ✅ Schritt 3
-│   │   │   ├── Navbar.jsx          ← ✅ Schritt 3
-│   │   │   └── Footer.jsx          ← ✅ Schritt 3
+│   │   │   ├── Layout.jsx              ← ✅ Schritt 3
+│   │   │   ├── Navbar.jsx              ← ✅ Schritt 3
+│   │   │   └── Footer.jsx              ← ✅ Schritt 3
 │   │   ├── sections/
 │   │   │   ├── HeroSection.jsx         ← ✅ Schritt 4
 │   │   │   ├── ServicesPreview.jsx     ← ✅ Schritt 4
-│   │   │   ├── WhyUsSections.jsx               ← ✅ Schritt 4
+│   │   │   ├── WhyUsSection.jsx        ← ✅ Schritt 4
 │   │   │   ├── StatsSection.jsx        ← ✅ Schritt 4
-│   │   │   ├── TestimonialsSection.jsx        ← ✅ Schritt 4
-│   │   │   └── CTASection.jsx          ← ✅ Schritt 4
+│   │   │   ├── TestimonialsSection.jsx ← ✅ Schritt 4
+│   │   │   └── CtaSection.jsx          ← ✅ Schritt 4
 │   │   └── ui/
-│   │       ├── Button.jsx          ← ⏳ Schritt 5
-│   │       ├── SectionWrapper.jsx  ← ⏳ Schritt 5
-│   │       └── ThemeToggle.jsx     ← ✅ Schritt 2
+│   │       ├── Button.jsx              ← ✅ Schritt 5
+│   │       ├── ServiceCard.jsx         ← ✅ Schritt 5
+│   │       ├── SectionWrapper.jsx      ← ✅ Schritt 5
+│   │       └── ThemeToggle.jsx         ← ✅ Schritt 2
 │   ├── pages/
-│   │   ├── HomePage.jsx            ← ⏳ Schritt 5
-│   │   ├── ServicesPage.jsx        ← ⏳ Schritt 5
-│   │   ├── ServiceDetailPage.jsx   ← ⏳ Schritt 5
-│   │   ├── AboutPage.jsx           ← ❌ Schritt 6
-│   │   └── ContactPage.jsx         ← ❌ Schritt 6
+│   │   ├── HomePage.jsx                ← ✅ Schritt 5
+│   │   ├── ServicesPage.jsx            ← ✅ Schritt 5
+│   │   ├── ServiceDetailPage.jsx       ← ✅ Schritt 5
+│   │   ├── AboutPage.jsx               ← ❌ Schritt 6
+│   │   └── ContactPage.jsx             ← ❌ Schritt 6
 │   ├── hooks/
-│   │   ├── useTheme.js             ← ✅ Schritt 2
-│   │   ├── useCountUp.js           ← ✅ Schritt 4
-│   │   └── useContactForm.js       ← ❌ Schritt 6
+│   │   ├── useTheme.js                 ← ✅ Schritt 2
+│   │   ├── useCountUp.js               ← ✅ Schritt 4
+│   │   └── useContactForm.js           ← ❌ Schritt 6
 │   ├── context/
-│   │   └── ThemeContext.jsx        ← ✅ Schritt 2
+│   │   └── ThemeContext.jsx            ← ✅ Schritt 2
 │   ├── data/
-│   │   ├── services.js             ← ✅ Schritt 1
-│   │   ├── stats.js                ← ✅ Schritt 1
-│   │   └── testimonials.js         ← ✅ Schritt 4
+│   │   ├── services.js                 ← ✅ Schritt 1
+│   │   ├── stats.js                    ← ✅ Schritt 1
+│   │   └── testimonials.js             ← ✅ Schritt 4
 │   └── styles/
-│       └── globals.css             ← ✅ Schritt 1
+│       └── globals.css                 ← ✅ Schritt 1
 ├── docs/
-│   ├── projekt_status.md           ← ✅ Schritt 1
-│   ├── changelog.md                ← ✅ Schritt 1
-│   └── todo.md                     ← ✅ Schritt 1
-├── README.md                       ← ✅ Schritt 1
-├── vite.config.js                  ← ✅ Schritt 1
-├── tailwind.config.js              ← ✅ Schritt 1
-└── .eslintrc.cjs                   ← ✅ Schritt 1
+│   ├── projekt_status.md               ← ✅
+│   ├── changelog.md                    ← ✅
+│   ├── todo.md                         ← ✅
+│   └── projektstruktur.md              ← ✅
+├── README.md                           ← ✅ Schritt 1
+├── vite.config.js                      ← ✅ Schritt 1
+├── tailwind.config.js                  ← ✅ Schritt 1
+├── .eslintrc.cjs                       ← ✅ Schritt 1
+├── index.html
+├── .gitignore
+└── package.json
 ```
 
 ---
@@ -424,6 +447,8 @@ ds-professionals/
 | ✅ `MutationObserver` für Logo-Swap in Navbar | Reagiert auf Dark/Light ohne Re-Mount |
 | ✅ `font-bold/extrabold/medium/normal` | Korrekte Tailwind v4 Klassen (kein font-700 etc.) |
 | ✅ Alle Code-Kommentare auf Englisch | Konsistenz, internationale Lesbarkeit |
+| ✅ `<Navigate replace />` bei 404-Slug | Kein Eintrag in Browser-History |
+| ✅ Sticky CTA-Karte auf ServiceDetailPage | Conversion-Optimierung, immer sichtbar |
 
 ---
 
@@ -452,3 +477,4 @@ ds-professionals/
 | CTASection Parse-Error (EOF) | Datei war abgeschnitten beim Speichern | Vollständige Datei neu schreiben |
 | Logo unsichtbar auf transparentem Hintergrund | SVG-Icon ohne Kontrast | Echte PNG-Logos verwenden |
 | Logo wechselt nicht beim Theme-Toggle | Kein Listener auf `html.dark` | `MutationObserver` auf `classList` |
+| `SyntaxError: useTheme not exported` | Falscher Import-Pfad | `@/context/ThemeContext` → `@/hooks/useTheme` |

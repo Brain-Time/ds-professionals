@@ -86,6 +86,9 @@
 
 - [x] `src/App.jsx` ✅
       → `Layout`-Wrapper mit React Router `<Routes>`
+      → Echte Pages eingebunden (HomePage, ServicesPage, ServiceDetailPage)
+      → `font-700` → `font-extrabold` Fix
+      → ComingSoon Placeholder für Schritt 6
 
 - [x] `src/styles/globals.css` ✅
       → Tailwind v4 Dark Mode: `@custom-variant dark`
@@ -161,41 +164,51 @@
 
 ---
 
-## 🟣 Schritt 5 — UI Components & Pages ← **NEXT**
+## 🟣 Schritt 5 — UI Components & Pages ✅ ERLEDIGT
 
-- [ ] `src/components/ui/Button.jsx`
-      → Varianten: `primary` | `secondary` | `gold` | `outline`
+- [x] `src/components/ui/Button.jsx` ✅
+      → Varianten: `gold` | `primary` | `outline` | `ghost`
       → Größen: `sm` | `md` | `lg`
       → `as` Prop (Link vs Button)
-      → Framer Motion Hover-Animation
+      → Loading Spinner (SVG, animiert)
+      → `disabled` + `aria-disabled` Support
+      → Alle Kommentare auf Englisch
 
-- [ ] `src/components/ui/SectionWrapper.jsx`
-      → Framer Motion `whileInView` Scroll-Fade
-      → `viewport={{ once: true }}`
-      → Konfigurierbare Delay-Prop
+- [x] `src/components/ui/SectionWrapper.jsx` ✅
+      → Framer Motion `whileInView` Scroll-Fade + Y-Offset
+      → `viewport={{ once: true, margin: '-80px' }}`
+      → Konfigurierbare `delay` + `duration` + `yOffset` Props
       → Wiederverwendbar für alle Sektionen
 
-- [ ] `src/pages/HomePage.jsx`
-      → Alle Sektionen zusammengesetzt
-      → React Helmet (SEO Meta-Tags)
+- [x] `src/pages/HomePage.jsx` ✅
+      → Alle 6 Sektionen zusammengesetzt
+      → React Helmet: title + meta description + OG tags + robots
 
-- [ ] `src/pages/ServicesPage.jsx`
-      → Hero-Bereich mit Titel
-      → Alle 7 Services als Grid
-      → Filter/Suche (optional, Nice-to-Have)
+- [x] `src/pages/ServicesPage.jsx` ✅
+      → Hero mit Breadcrumb + Titel + Untertitel
+      → Alle 7 Services als Grid (1 → 2 → 3 Spalten)
+      → ServiceCard: Accent-Bar + Icon + Titel + shortDesc + 3 Features + Link
+      → Staggered Fade-in via `whileInView`
+      → CTA Strip: „Nicht das Richtige gefunden?" + 2 Buttons
       → React Helmet SEO
 
-- [ ] `src/pages/ServiceDetailPage.jsx`
+- [x] `src/pages/ServiceDetailPage.jsx` ✅
       → Dynamisch via `useParams()` + `getServiceBySlug()`
-      → 404-Handling wenn Slug nicht gefunden
-      → Hero + Beschreibung + Features-Liste
-      → CTA Bereich
-      → Breadcrumb Navigation
-      → React Helmet (dynamische SEO-Tags)
+      → 404-Handling: `<Navigate to="/dienstleistungen" replace />`
+      → Hero: Icon-Badge + Breadcrumb + Titel + shortDesc
+      → Beschreibung (longDesc) + vollständige Features-Checkliste
+      → Sticky CTA-Karte (rechts): Trust-Points + 2 Buttons
+      → Related Services (3 weitere, ohne aktuellen)
+      → React Helmet: dynamische SEO-Tags pro Service
+
+- [x] `src/App.jsx` ✅ (aktualisiert)
+      → HomePage, ServicesPage, ServiceDetailPage eingebunden
+      → ComingSoon Placeholder für AboutPage + ContactPage (Schritt 6)
+      → `font-extrabold` statt `font-700`
 
 ---
 
-## ⚫ Schritt 6 — AboutPage & ContactPage
+## ⚫ Schritt 6 — AboutPage & ContactPage ← **NEXT**
 
 - [ ] `src/pages/AboutPage.jsx`
       → Unternehmensgeschichte
