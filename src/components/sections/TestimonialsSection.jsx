@@ -114,7 +114,7 @@ const TestimonialCard = ({ testimonial }) => (
     <div className="flex items-center gap-3">
       {/* Avatar (Initialen) */}
       <div
-        className="w-11 h-11 rounded-full flex items-center justify-center text-white font-700 text-sm flex-shrink-0"
+        className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
         style={{ background: testimonial.color || '#1B4FD8' }}
         aria-hidden="true"
       >
@@ -122,7 +122,7 @@ const TestimonialCard = ({ testimonial }) => (
       </div>
 
       <div className="min-w-0">
-        <p className="text-sm font-700 text-[#0D1B2A] dark:text-white truncate">
+        <p className="text-sm font-bold text-[#0D1B2A] dark:text-white truncate">
           {testimonial.name}
         </p>
         <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
@@ -132,7 +132,7 @@ const TestimonialCard = ({ testimonial }) => (
 
       {/* Service-Badge */}
       <div className="ml-auto flex-shrink-0">
-        <span className="inline-block px-2.5 py-1 rounded-full bg-[#1B4FD8]/10 dark:bg-[#1B4FD8]/20 text-[#1B4FD8] text-xs font-600 whitespace-nowrap">
+        <span className="inline-block px-2.5 py-1 rounded-full bg-[#1B4FD8]/10 dark:bg-[#1B4FD8]/20 text-[#1B4FD8] text-xs font-semibold whitespace-nowrap">
           {testimonial.service}
         </span>
       </div>
@@ -160,12 +160,12 @@ const Testimonials = () => {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#1B4FD8]/10 dark:bg-[#1B4FD8]/20 text-[#1B4FD8] text-sm font-600 mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#1B4FD8]/10 dark:bg-[#1B4FD8]/20 text-[#1B4FD8] text-sm font-semibold mb-4">
             Kundenstimmen
           </span>
           <h2
             id="testimonials-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-800 text-[#0D1B2A] dark:text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D1B2A] dark:text-white mb-4"
           >
             Was unsere Kunden sagen
           </h2>
@@ -209,7 +209,7 @@ const Testimonials = () => {
                 </svg>
               ))}
             </div>
-            <span className="text-sm font-700 text-[#0D1B2A] dark:text-white">
+            <span className="text-sm font-bold text-[#0D1B2A] dark:text-white">
               4.9 / 5
             </span>
             <span className="text-sm text-slate-500 dark:text-slate-400">

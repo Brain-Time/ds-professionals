@@ -64,14 +64,14 @@ const StatItem = ({ stat, isVisible }) => {
       <div className="flex items-end gap-0.5 mb-2">
         {/* Prefix (z.B. "~") */}
         {stat.prefix && (
-          <span className="text-2xl font-500 text-white/60 mb-1">
+          <span className="text-2xl font-medium text-white/60 mb-1">
             {stat.prefix}
           </span>
         )}
 
         {/* Animierte Zahl */}
         <span
-          className="text-5xl sm:text-6xl font-800 text-white leading-none tabular-nums"
+          className="text-5xl sm:text-6xl font-extrabold text-white leading-none tabular-nums"
           aria-live="polite"
         >
           {isVisible ? count.toLocaleString('de-DE') : 0}
@@ -80,7 +80,7 @@ const StatItem = ({ stat, isVisible }) => {
         {/* Suffix (z.B. "+", "%") */}
         {stat.suffix && (
           <span
-            className="text-3xl font-700 mb-1"
+            className="text-3xl font-bold mb-1"
             style={{ color: '#C9A84C' }}
             aria-hidden="true"
           >
@@ -90,7 +90,7 @@ const StatItem = ({ stat, isVisible }) => {
       </div>
 
       {/* Label */}
-      <p className="text-base font-600 text-white/80 mb-1">
+      <p className="text-base font-semibold text-white/80 mb-1">
         {stat.label}
       </p>
 
@@ -150,12 +150,12 @@ const StatsCounter = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/70 text-sm font-600 mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/70 text-sm font-semibold mb-4">
             Zahlen, die überzeugen
           </span>
           <h2
             id="stats-heading"
-            className="text-3xl sm:text-4xl font-800 text-white"
+            className="text-3xl sm:text-4xl font-extrabold text-white"
           >
             D&amp;S Professionals in Zahlen
           </h2>

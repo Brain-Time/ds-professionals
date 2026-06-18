@@ -79,7 +79,7 @@ const ServiceCard = ({ service, index }) => {
       </div>
 
       {/* Titel */}
-      <h3 className="text-base font-700 text-[#0D1B2A] dark:text-white mb-2 group-hover:text-[#1B4FD8] dark:group-hover:text-[#1B4FD8] transition-colors duration-200">
+      <h3 className="text-base font-bold text-[#0D1B2A] dark:text-white mb-2 group-hover:text-[#1B4FD8] dark:group-hover:text-[#1B4FD8] transition-colors duration-200">
         {service.title}
       </h3>
 
@@ -93,7 +93,7 @@ const ServiceCard = ({ service, index }) => {
         to={`/dienstleistungen/${service.slug}`}
         className={[
           'inline-flex items-center gap-1.5',
-          'text-sm font-600 text-[#1B4FD8] dark:text-[#1B4FD8]',
+          'text-sm font-semibold text-[#1B4FD8] dark:text-[#1B4FD8]',
           'hover:gap-2.5 transition-all duration-200',
           'focus:outline-none focus-visible:underline',
         ].join(' ')}
@@ -136,13 +136,13 @@ const ServicesPreview = () => {
           variants={headerVariants}
         >
           {/* Label */}
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#1B4FD8]/10 dark:bg-[#1B4FD8]/20 text-[#1B4FD8] text-sm font-600 mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#1B4FD8]/10 dark:bg-[#1B4FD8]/20 text-[#1B4FD8] text-sm font-semibold mb-4">
             Unsere Leistungen
           </span>
 
           <h2
             id="services-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-800 text-[#0D1B2A] dark:text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D1B2A] dark:text-white mb-4"
           >
             Was wir für Sie tun
           </h2>
@@ -184,7 +184,7 @@ const ServicesPreview = () => {
                 'inline-flex items-center gap-2 px-8 py-3.5 rounded-xl',
                 'border-2 border-[#1B4FD8] text-[#1B4FD8]',
                 'hover:bg-[#1B4FD8] hover:text-white',
-                'font-700 text-base',
+                'font-bold text-base',
                 'transition-all duration-200',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1B4FD8]',
               ].join(' ')}

@@ -115,7 +115,7 @@ const HeroSection = () => {
         >
           {/* ── Badge ─────────────────────────────────────── */}
           <motion.div variants={itemVariants} className="mb-6">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/80 text-sm font-500 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/80 text-sm font-medium backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
               Reinigungsdienst Karlsruhe &amp; Umgebung
             </span>
@@ -124,7 +124,7 @@ const HeroSection = () => {
           {/* ── H1 Headline ───────────────────────────────── */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-800 text-white leading-tight mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight mb-6"
           >
             Professionelle{' '}
             <span
@@ -147,7 +147,7 @@ const HeroSection = () => {
             variants={itemVariants}
             className="text-lg sm:text-xl text-white/70 leading-relaxed mb-4 max-w-2xl"
           >
-            <em className="text-white/90 not-italic font-500">
+            <em className="text-white/90 not-italic font-medium">
               „Mehr als nur sauber"
             </em>{' '}
             — Maßgeschneiderte Reinigungslösungen für Unternehmen,
@@ -175,7 +175,7 @@ const HeroSection = () => {
                   'inline-flex items-center justify-center gap-2',
                   'px-8 py-4 rounded-xl',
                   'bg-[#C9A84C] hover:bg-[#b8943d]',
-                  'text-white font-700 text-base',
+                  'text-white font-bold text-base',
                   'shadow-xl shadow-[#C9A84C]/30',
                   'transition-all duration-200',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]',
@@ -200,7 +200,7 @@ const HeroSection = () => {
                   'px-8 py-4 rounded-xl',
                   'bg-transparent border-2 border-white/30',
                   'hover:bg-white/10 hover:border-white/50',
-                  'text-white font-700 text-base',
+                  'text-white font-bold text-base',
                   'backdrop-blur-sm',
                   'transition-all duration-200',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50',
@@ -235,7 +235,7 @@ const HeroSection = () => {
               >
                 <span className="text-2xl" aria-hidden="true">{item.icon}</span>
                 <div>
-                  <p className="text-white font-700 text-base leading-tight">
+                  <p className="text-white font-bold text-base leading-tight">
                     {item.label}
                   </p>
                   <p className="text-white/50 text-xs">{item.sub}</p>
