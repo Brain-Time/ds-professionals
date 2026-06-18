@@ -1,36 +1,40 @@
 /**
  * Footer.jsx
  * ─────────────────────────────────────────────────────────────
- * Footer für D&S Professionals
+ * Footer for D&S Professionals
  *
- * Layout: 3 Spalten (Desktop) / Gestapelt (Mobile)
- *   1. Logo + Slogan + Kurzbeschreibung
- *   2. Schnelllinks (Navigation)
- *   3. Kontaktdaten Karlsruhe
+ * Layout: 3 columns (desktop) / stacked (mobile)
+ *   1. Logo image + text + slogan + description
+ *   2. Quick links (navigation) + services
+ *   3. Contact info Karlsruhe
  *
- * Unten: Copyright · Impressum · Datenschutz · AGB
+ * Bottom bar: Copyright · Impressum · Datenschutz · AGB
  * ─────────────────────────────────────────────────────────────
  */
 
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-// ── Konfiguration ──────────────────────────────────────────────
+// ── Logo images ────────────────────────────────────────────────
+// Footer is always dark background → use white/gold logo (_a)
+import logoDark from '../../assets/D&S PROFESSIONALS_a.png';
 
+// ── Navigation config ──────────────────────────────────────────
 const QUICK_LINKS = [
-  { label: 'Home',             to: '/'                },
+  { label: 'Home',             to: '/'                 },
   { label: 'Dienstleistungen', to: '/dienstleistungen' },
   { label: 'Über uns',         to: '/ueber-uns'        },
   { label: 'Kontakt',          to: '/kontakt'          },
 ];
 
 const SERVICE_LINKS = [
-  { label: 'Industriereinigung',       to: '/dienstleistungen/industriereinigung'       },
-  { label: 'Büroreinigung',            to: '/dienstleistungen/bueroreinigung'            },
-  { label: 'Hallenreinigung',          to: '/dienstleistungen/hallenreinigung'           },
-  { label: 'Fitnessstudio-Reinigung',  to: '/dienstleistungen/fitnessstudio-reinigung'  },
-  { label: 'Praxisreinigung',          to: '/dienstleistungen/praxisreinigung'           },
-  { label: 'Treppenhausreinigung',     to: '/dienstleistungen/treppenhausreinigung'      },
+  { label: 'Industriereinigung',      to: '/dienstleistungen/industriereinigung'      },
+  { label: 'Büroreinigung',           to: '/dienstleistungen/bueroreinigung'           },
+  { label: 'Hallenreinigung',         to: '/dienstleistungen/hallenreinigung'          },
+  { label: 'Fitnessstudio-Reinigung', to: '/dienstleistungen/fitnessstudio-reinigung' },
+  { label: 'Praxisreinigung',         to: '/dienstleistungen/praxisreinigung'          },
+  { label: 'Treppenhausreinigung',    to: '/dienstleistungen/treppenhausreinigung'     },
 ];
 
 const LEGAL_LINKS = [
@@ -42,27 +46,6 @@ const LEGAL_LINKS = [
 const CURRENT_YEAR = new Date().getFullYear();
 
 // ── SVG Icons ──────────────────────────────────────────────────
-
-const BroomIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-[#C9A84C]"
-    aria-hidden="true"
-  >
-    <path d="M9 3L5 7l10 10 4-4L9 3z" />
-    <path d="M5 7L3 21l7-4" />
-    <path d="M15 17l4 4" />
-  </svg>
-);
-
 const PhoneIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
     fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -98,25 +81,25 @@ const ClockIcon = () => (
   </svg>
 );
 
-// ── Animations-Varianten ───────────────────────────────────────
+// ── Animation variants ─────────────────────────────────────────
 const fadeInUp = {
   hidden:  { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0  },
 };
 
-// ── Footer Komponente ──────────────────────────────────────────
+// ── Footer component ───────────────────────────────────────────
 const Footer = () => {
   return (
     <footer
       className="bg-[#0D1B2A] dark:bg-[#060D14] text-slate-300"
       role="contentinfo"
-      aria-label="Seitenfooter"
+      aria-label="Site footer"
     >
-      {/* ── Hauptbereich ─────────────────────────────────── */}
+      {/* ── Main content area ──────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
 
-          {/* ── Spalte 1: Logo + Text ──────────────────────── */}
+          {/* ── Column 1: Logo + description ──────────── */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
@@ -125,43 +108,50 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-1"
           >
-            {/* Logo */}
+            {/* Logo: image + text (same style as Navbar) */}
             <Link
               to="/"
-              className="inline-flex items-center gap-2.5 mb-5 group"
+              className="inline-flex items-center gap-3 mb-5 group"
               aria-label="D&S Professionals – Startseite"
             >
-              <BroomIcon />
+              <img
+                src={logoDark}
+                alt="D&S Professionals Logo"
+                className="h-10 w-auto object-contain"
+              />
+              {/* Divider */}
+              <span className="w-px h-8 bg-slate-600" aria-hidden="true" />
+              {/* Text block */}
               <div className="flex flex-col leading-tight">
-                <span className="text-base font-700 text-white tracking-tight">
+                <span className="text-sm font-extrabold text-white tracking-tight">
                   D&amp;S Professionals
                 </span>
-                <span className="text-[10px] text-slate-400 tracking-widest uppercase">
+                <span className="text-[10px] font-normal text-slate-400 tracking-widest uppercase">
                   Reinigungsdienst Karlsruhe
                 </span>
               </div>
             </Link>
 
             {/* Slogan */}
-            <p className="text-[#C9A84C] font-500 text-sm mb-3 italic">
+            <p className="text-[#C9A84C] font-medium text-sm mb-3 italic">
               „Mehr als nur sauber"
             </p>
 
-            {/* Beschreibung */}
+            {/* Description */}
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Professionelle Reinigungsdienstleistungen für Unternehmen in
               Karlsruhe und Umgebung. Maßgeschneidert, zuverlässig und
               zu fairen Preisen.
             </p>
 
-            {/* Referenzen Badge */}
+            {/* Trust badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-slate-400">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
               Vertraut von Indutec · Iwago · Wisag
             </div>
           </motion.div>
 
-          {/* ── Spalte 2: Navigation + Services ───────────── */}
+          {/* ── Column 2: Navigation + Services ──────── */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
@@ -169,8 +159,8 @@ const Footer = () => {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {/* Schnelllinks */}
-            <h3 className="text-white font-700 text-sm uppercase tracking-wider mb-5">
+            {/* Quick links */}
+            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-5">
               Navigation
             </h3>
             <ul className="space-y-2.5 mb-8" role="list">
@@ -178,11 +168,7 @@ const Footer = () => {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className={[
-                      'text-sm text-slate-400 hover:text-[#1B4FD8]',
-                      'transition-colors duration-200',
-                      'flex items-center gap-2 group',
-                    ].join(' ')}
+                    className="text-sm text-slate-400 hover:text-[#1B4FD8] transition-colors duration-200 flex items-center gap-2 group"
                   >
                     <span
                       className="w-1 h-1 rounded-full bg-[#1B4FD8] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
@@ -194,8 +180,8 @@ const Footer = () => {
               ))}
             </ul>
 
-            {/* Dienstleistungen */}
-            <h3 className="text-white font-700 text-sm uppercase tracking-wider mb-5">
+            {/* Services */}
+            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-5">
               Dienstleistungen
             </h3>
             <ul className="space-y-2.5" role="list">
@@ -203,11 +189,7 @@ const Footer = () => {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className={[
-                      'text-sm text-slate-400 hover:text-[#1B4FD8]',
-                      'transition-colors duration-200',
-                      'flex items-center gap-2 group',
-                    ].join(' ')}
+                    className="text-sm text-slate-400 hover:text-[#1B4FD8] transition-colors duration-200 flex items-center gap-2 group"
                   >
                     <span
                       className="w-1 h-1 rounded-full bg-[#1B4FD8] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
@@ -220,7 +202,7 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* ── Spalte 3: Kontakt ──────────────────────────── */}
+          {/* ── Column 3: Contact ─────────────────────── */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
@@ -228,27 +210,23 @@ const Footer = () => {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-white font-700 text-sm uppercase tracking-wider mb-5">
+            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-5">
               Kontakt
             </h3>
 
             <ul className="space-y-4" role="list">
-              {/* Adresse */}
+              {/* Address */}
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 text-[#1B4FD8] flex-shrink-0">
-                  <MapPinIcon />
-                </span>
+                <span className="mt-0.5 text-[#1B4FD8] flex-shrink-0"><MapPinIcon /></span>
                 <address className="not-italic text-sm text-slate-400 leading-relaxed">
                   Karlsruhe und Umgebung<br />
                   Baden-Württemberg, Deutschland
                 </address>
               </li>
 
-              {/* Telefon */}
+              {/* Phone */}
               <li className="flex items-center gap-3">
-                <span className="text-[#1B4FD8] flex-shrink-0">
-                  <PhoneIcon />
-                </span>
+                <span className="text-[#1B4FD8] flex-shrink-0"><PhoneIcon /></span>
                 <a
                   href="tel:+4972112345678"
                   className="text-sm text-slate-400 hover:text-white transition-colors duration-200"
@@ -258,11 +236,9 @@ const Footer = () => {
                 </a>
               </li>
 
-              {/* E-Mail */}
+              {/* Email */}
               <li className="flex items-center gap-3">
-                <span className="text-[#1B4FD8] flex-shrink-0">
-                  <MailIcon />
-                </span>
+                <span className="text-[#1B4FD8] flex-shrink-0"><MailIcon /></span>
                 <a
                   href="mailto:info@ds-professionals.de"
                   className="text-sm text-slate-400 hover:text-white transition-colors duration-200 break-all"
@@ -271,11 +247,9 @@ const Footer = () => {
                 </a>
               </li>
 
-              {/* Öffnungszeiten */}
+              {/* Opening hours */}
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 text-[#1B4FD8] flex-shrink-0">
-                  <ClockIcon />
-                </span>
+                <span className="mt-0.5 text-[#1B4FD8] flex-shrink-0"><ClockIcon /></span>
                 <div className="text-sm text-slate-400 leading-relaxed">
                   <p>Mo – Fr: 07:00 – 18:00 Uhr</p>
                   <p>Sa: 08:00 – 14:00 Uhr</p>
@@ -284,7 +258,7 @@ const Footer = () => {
               </li>
             </ul>
 
-            {/* CTA */}
+            {/* CTA button */}
             <motion.div
               className="mt-8"
               whileHover={{ scale: 1.02 }}
@@ -295,22 +269,16 @@ const Footer = () => {
                 className={[
                   'inline-flex items-center gap-2 px-5 py-2.5 rounded-lg',
                   'bg-[#C9A84C] hover:bg-[#b8943d]',
-                  'text-white text-sm font-700',
+                  'text-white text-sm font-bold',
                   'transition-colors duration-200',
                   'shadow-lg shadow-[#C9A84C]/20',
                 ].join(' ')}
               >
                 Kostenloses Angebot
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
                   aria-hidden="true"
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" />
@@ -321,10 +289,10 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* ── Trennlinie ────────────────────────────────────── */}
+      {/* ── Divider ────────────────────────────────────── */}
       <div className="border-t border-white/10" />
 
-      {/* ── Copyright & Legal ────────────────────────────── */}
+      {/* ── Bottom bar: copyright + legal links ────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
 
@@ -334,8 +302,8 @@ const Footer = () => {
             Alle Rechte vorbehalten.
           </p>
 
-          {/* Legal Links */}
-          <nav aria-label="Rechtliche Links">
+          {/* Legal links */}
+          <nav aria-label="Legal links">
             <ul className="flex items-center gap-4 sm:gap-6" role="list">
               {LEGAL_LINKS.map((link, i) => (
                 <li key={link.to} className="flex items-center gap-4 sm:gap-6">
@@ -345,7 +313,6 @@ const Footer = () => {
                   >
                     {link.label}
                   </Link>
-                  {/* Trennpunkt zwischen Links */}
                   {i < LEGAL_LINKS.length - 1 && (
                     <span className="text-slate-700" aria-hidden="true">·</span>
                   )}

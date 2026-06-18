@@ -5,23 +5,96 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/)
 
 ---
 
-## [Unreleased] — Schritt 4: HomePage Sektionen
+## [Unreleased] — Schritt 5: UI Components & Pages
 
 > Nächster Schritt.
 
 ### Geplant
-- `src/components/ui/SectionWrapper.jsx` — Framer Motion Scroll-Fade Wrapper
-- `src/components/ui/Button.jsx` — Primary / Secondary / Gold Varianten
-- `src/components/ui/ServiceCard.jsx` — Wiederverwendbare Service-Karte
-- `src/components/sections/HeroSection.jsx` — Fullscreen Hero mit CTA
-- `src/components/sections/ServicesPreview.jsx` — 7 Service-Cards (Vorschau)
-- `src/components/sections/WhyUsSection.jsx` — 4 USPs mit Icons
-- `src/components/sections/StatsSection.jsx` — Counter-Animation
-- `src/components/sections/TestimonialsSection.jsx` — Kundenstimmen
-- `src/components/sections/CtaSection.jsx` — "Jetzt Angebot anfordern"
-- `src/hooks/useCountUp.js` — Zahlen-Counter Hook (IntersectionObserver + rAF)
-- `src/data/testimonials.js` — 3 Kundenstimmen Daten
-- `src/pages/HomePage.jsx` — Alle Sektionen + React Helmet SEO
+- `src/components/ui/Button.jsx` — Varianten: primary | secondary | gold | outline, Größen: sm | md | lg, `as` Prop, Framer Motion
+- `src/components/ui/SectionWrapper.jsx` — Framer Motion `whileInView` Scroll-Fade, Delay-Prop
+- `src/pages/HomePage.jsx` — Alle Sektionen zusammengesetzt + React Helmet SEO
+- `src/pages/ServicesPage.jsx` — Hero + alle 7 Services als Grid + React Helmet SEO
+- `src/pages/ServiceDetailPage.jsx` — Dynamisch via `useParams()` + `getServiceBySlug()`, 404-Handling, Breadcrumb, React Helmet dynamisch
+
+---
+
+## [0.4.0] — 2026-06-18 · Schritt 4: HomePage Sektionen ✅
+
+### Added
+- `src/hooks/useCountUp.js`
+  → `IntersectionObserver` für Trigger (einmalige Ausführung)
+  → `easeOutQuart` Easing-Kurve für natürliche Bewegung
+  → `requestAnimationFrame` für 60fps Performance (kein `setInterval`)
+  → Konfigurierbare Dauer + Threshold
+
+- `src/data/testimonials.js`
+  → 3 Kundenstimmen:
+     - Marcus Weber / Indutec (Industriereinigung)
+     - Sandra Hoffmann / FitLife (Fitnessstudio-Reinigung)
+     - Dr. Thomas Keller / Praxis (Praxisreinigung)
+  → Felder: `id`, `name`, `role`, `company`, `initials`, `rating`, `text`, `service`, `avatarColor`
+
+- `src/components/sections/HeroSection.jsx`
+  → Fullscreen Hero (`min-h-screen`)
+  → Gradient: `#0D1B2A` → `#1B4FD8`
+  → H1: „Professionelle Reinigung in Karlsruhe"
+  → Slogan + Beschreibung + Referenz-Hinweis
+  → CTA 1: „Angebot anfragen" (Gold)
+  → CTA 2: „Leistungen entdecken" (Outline)
+  → Trust-Bar: 10+ Jahre | 200+ Kunden | Versichert | ⭐ 4.9
+  → Framer Motion `fadeInUp` mit Stagger
+  → Scroll-Down Indicator (animiert)
+  → Dekorative Blur-Kreise (animiert)
+
+- `src/components/sections/ServicesPreview.jsx`
+  → 6 Service-Karten aus `services.js`
+  → Icon + Titel + Kurzbeschreibung + Link
+  → Hover: leichtes Heben (Framer Motion `whileHover`)
+  → Staggered Fade-in via `useInView`
+  → Responsive Grid: 1 → 2 → 3 Spalten
+  → „Alle Dienstleistungen ansehen" Button
+  → Hover-Glow Linie oben auf Karte
+
+- `src/components/sections/WhyUs.jsx`
+  → 4 USPs: Erfahrung, Zuverlässigkeit, Flexibilität, Faire Preise
+  → Referenz-Badges: Indutec · Iwago · Wisag · u.v.m.
+  → Zweispaltiges Layout: Text links | USP-Grid rechts
+  → CTA „Mehr über uns erfahren"
+  → Framer Motion: Links `slideIn` + Rechts staggered
+
+- `src/components/sections/StatsCounter.jsx`
+  → 4 animierte Kennzahlen aus `stats.js`
+  → `useCountUp` Hook integriert
+  → Dunkler Gradient-Hintergrund (`#0D1B2A`)
+  → Suffix in Gold (`#C9A84C`)
+  → Vertikale Trennlinien zwischen Items (Desktop)
+  → Dekoratives Hintergrundmuster + Blur-Akzent
+
+- `src/components/sections/Testimonials.jsx`
+  → 3 Testimonial-Karten aus `testimonials.js`
+  → Avatar (Initialen + Hintergrundfarbe)
+  → `StarRating` Komponente (SVG, Gold)
+  → Name, Rolle, Firma, Service-Badge
+  → `QuoteIcon` (dekorativ)
+  → Gesamt-Bewertungs-Badge (4.9 / 5)
+  → Staggered Fade-in via `useInView`
+
+- `src/components/sections/CTASection.jsx`
+  → „Bereit für professionelle Sauberkeit?"
+  → Gold CTA Button „Jetzt Angebot anfragen"
+  → Sekundärer Button „Direkt anrufen" (`tel:` Link)
+  → Trust-Note: Kostenlos · 24h Antwort · Karlsruhe
+  → Dunkelblauer Kontrasthintergrund + Blur-Dekor
+  → Framer Motion staggered Animationen via `useInView`
+  → Alle Kommentare auf Englisch
+
+### Entscheidungen (Schritt 4)
+- `useInView` (Framer Motion) statt nativem `IntersectionObserver` → sauberer Code, weniger Boilerplate
+- `easeOutQuart` für Counter → natürlichere Bewegung als linear
+- `requestAnimationFrame` für Counter → 60fps, kein `setInterval` Overhead
+- Initialen-Avatar statt Fotos → kein Bild-Overhead, immer verfügbar, DSGVO-sicher
+- Trust-Bar im Hero → sofortige Vertrauensbildung above the fold
+- Blur-Dekorationen im Hero → Tiefe ohne schwere Assets
 
 ---
 
@@ -29,19 +102,23 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/)
 
 ### Added
 - `src/components/layout/Navbar.jsx`
-  → Echtes Logo-Bild (`_a.png` Light / `_b.png` Dark) via `useTheme`
-  → Firmenname „D&S Professionals" + Subtitle „Reinigungsdienst Karlsruhe"
+  → Logo: echtes Bild (`_b.png` hell / `_a.png` dunkel) + Divider + Text + Untertitel
+  → Automatischer Logo-Swap via `MutationObserver` auf `html.classList` (Theme-Wechsel)
+  → Mobile Menü Header: Text-Logo (kein Bild, kein Overhead)
   → Desktop Navigation: Home | Dienstleistungen | Über uns | Kontakt
-  → Active Link Highlighting via `NavLink`
+  → Active Link Highlighting via `NavLink` + `layoutId="nav-underline"`
   → Sticky + `backdrop-blur` beim Scrollen (Scroll-Shadow)
   → `ThemeToggle` integriert
   → Gold CTA Button „Angebot anfragen"
   → Mobile Hamburger-Menü (Framer Motion Slide-in)
+  → Body-Scroll-Lock bei geöffnetem Menü
   → Menü schließt automatisch bei Route-Wechsel
-  → `useTheme` korrekt aus `@/hooks/useTheme` importiert
+  → Alle Kommentare auf Englisch
+  → Korrekte Tailwind-Klassen: `font-bold`, `font-extrabold`, `font-medium`
 
 - `src/components/layout/Footer.jsx`
-  → Echtes Logo-Bild (`_b.png`, fix dunkel) — kein SVG-Platzhalter mehr
+  → Logo: echtes Bild (`_a.png` weiß/gold) + Divider + Text + Untertitel
+  → Footer immer dunkel → immer `_a.png` (kein Theme-Swap nötig)
   → Slogan „Mehr als nur sauber"
   → 3 Spalten: Logo+Text | Navigation+Services | Kontakt Karlsruhe
   → Alle 6 Dienstleistungs-Links
@@ -50,6 +127,7 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/)
   → Legal Links: Impressum · Datenschutz · AGB
   → Referenzen-Badge: Indutec · Iwago · Wisag
   → Framer Motion `whileInView` `fadeInUp` Animationen
+  → Alle Kommentare auf Englisch
 
 - `src/components/layout/Layout.jsx`
   → `<Navbar />` + `<main>` + `<Footer />` Wrapper
@@ -70,24 +148,25 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/)
   → Tailwind v4 Dark Mode: `@custom-variant dark (&:where(.dark, .dark *))`
 
 ### Assets hinzugefügt
-- `src/assets/D&S PROFESSIONALS_a.png` — Logo Light Mode (500×500px)
-- `src/assets/D&S PROFESSIONALS_b.png` — Logo Dark Mode + Footer (500×500px)
+- `src/assets/D&S PROFESSIONALS_a.png` — Logo weiß/gold (Navbar Dark + Footer)
+- `src/assets/D&S PROFESSIONALS_b.png` — Logo schwarz/gold (Navbar Light)
 
 ### Fixed
+- `font-700/800/500/400` greifen nicht → korrigiert zu `font-bold/extrabold/medium/normal`
+- Logo-Swap funktionierte nicht beim Theme-Toggle → `MutationObserver` auf `html.classList` implementiert
+- Mobile Menü zeigte Logo-Bild → auf Text-Logo umgestellt (kein Bild-Overhead)
 - `SyntaxError: useTheme not exported from ThemeContext`
   → Import in `Navbar.jsx` von `@/context/ThemeContext` auf `@/hooks/useTheme` korrigiert
-- `lucide-react` fehlte → `npm install lucide-react` nachinstalliert
-- Logo zu klein / SVG-Platzhalter im Footer
-  → Echtes PNG-Logo eingebunden (`h-9 w-9` Navbar / `h-12 w-12` Footer)
 
 ### Entscheidungen (Schritt 3)
-- Logo-Bild + Firmenname nebeneinander → quadratisches 500×500 PNG braucht Text-Ergänzung
-- `_b.png` fix im Footer → dunkler Hintergrund, kein Theme-Switch nötig
-- `_a.png` / `_b.png` in Navbar per Theme → automatischer Wechsel via `useTheme`
+- Echte Logo-Bilder statt SVG-Icon → professioneller, Markenidentität
+- `MutationObserver` für Logo-Swap → reagiert auf Dark/Light ohne Re-Mount
+- `_a.png` fix im Footer → dunkler Hintergrund, kein Theme-Switch nötig
+- Logo-Bild + Divider + Text nebeneinander → konsistentes Branding in Navbar & Footer
 - `backdrop-blur` in Navbar → moderner Look, Lesbarkeit beim Scrollen
 - `AnimatePresence mode="wait"` → saubere Page-Transitions
 - `behavior: 'instant'` bei ScrollToTop → kein sichtbares Scrollen bei Route-Wechsel
-- `lucide-react` minimal eingesetzt (Menu/X Icons in Navbar)
+- Alle Code-Kommentare auf Englisch → Konsistenz, internationale Lesbarkeit
 
 ---
 

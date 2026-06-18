@@ -1,54 +1,38 @@
 /**
  * Navbar.jsx
  * ─────────────────────────────────────────────────────────────
- * Sticky Navigation für D&S Professionals
+ * Sticky Navigation for D&S Professionals
  *
  * Features:
- *   - Sticky mit Hintergrund + Shadow beim Scrollen
- *   - Logo: "D&S Professionals" + Besen-Icon (SVG)
- *   - Desktop-Links: Home | Dienstleistungen | Über uns | Kontakt
- *   - Active Link Highlighting via useLocation
- *   - ThemeToggle (rechts)
+ *   - Sticky with background + shadow on scroll
+ *   - Logo: image + text "D&S Professionals / Reinigungsdienst Karlsruhe"
+ *   - Desktop links: Home | Dienstleistungen | Über uns | Kontakt
+ *   - Active link highlighting via useLocation
+ *   - ThemeToggle (right side)
  *   - CTA Button "Angebot anfragen" (Gold)
- *   - Mobile: Hamburger → Framer Motion Slide-in Menü
+ *   - Mobile: Hamburger → Framer Motion slide-in menu
+ *   - Mobile menu header: text-only logo (no image)
  * ─────────────────────────────────────────────────────────────
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '../ui/ThemeToggle';
 
-// ── Navigation Links Konfiguration ────────────────────────────
+// ── Logo images ────────────────────────────────────────────────
+import logoLight from '../../assets/D&S PROFESSIONALS_b.png'; // black/gold → light mode
+import logoDark  from '../../assets/D&S PROFESSIONALS_a.png'; // white/gold → dark mode
+
+// ── Navigation links config ────────────────────────────────────
 const NAV_LINKS = [
-  { label: 'Home',             to: '/'                },
+  { label: 'Home',             to: '/'                 },
   { label: 'Dienstleistungen', to: '/dienstleistungen' },
   { label: 'Über uns',         to: '/ueber-uns'        },
   { label: 'Kontakt',          to: '/kontakt'          },
 ];
 
-// ── SVG: Besen / Reinigungsicon ────────────────────────────────
-const BroomIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-[#C9A84C]"
-    aria-hidden="true"
-  >
-    <path d="M9 3L5 7l10 10 4-4L9 3z" />
-    <path d="M5 7L3 21l7-4" />
-    <path d="M15 17l4 4" />
-  </svg>
-);
-
-// ── SVG: Hamburger Icon ────────────────────────────────────────
+// ── Hamburger / Close icon ─────────────────────────────────────
 const HamburgerIcon = ({ isOpen }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +48,6 @@ const HamburgerIcon = ({ isOpen }) => (
   >
     <AnimatePresence mode="wait" initial={false}>
       {isOpen ? (
-        // X-Icon (Schließen)
         <motion.g
           key="close"
           initial={{ opacity: 0, rotate: -45 }}
@@ -72,11 +55,10 @@ const HamburgerIcon = ({ isOpen }) => (
           exit={{ opacity: 0, rotate: 45 }}
           transition={{ duration: 0.2 }}
         >
-          <line x1="18" y1="6"  x2="6" y2="18" />
+          <line x1="18" y1="6"  x2="6"  y2="18" />
           <line x1="6"  y1="6"  x2="18" y2="18" />
         </motion.g>
       ) : (
-        // Hamburger-Icon (Öffnen)
         <motion.g
           key="open"
           initial={{ opacity: 0 }}
@@ -93,7 +75,7 @@ const HamburgerIcon = ({ isOpen }) => (
   </svg>
 );
 
-// ── Mobile Menü Animationsvarianten ───────────────────────────
+// ── Mobile menu animation variants ────────────────────────────
 const mobileMenuVariants = {
   hidden: {
     opacity: 0,
@@ -116,33 +98,45 @@ const mobileLinkVariants = {
   }),
 };
 
-// ── Navbar Komponente ──────────────────────────────────────────
+// ── Navbar component ───────────────────────────────────────────
 const Navbar = () => {
-  const [isScrolled,    setIsScrolled]    = useState(false);
-  const [isMobileOpen,  setIsMobileOpen]  = useState(false);
+  const [isScrolled,   setIsScrolled]   = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isDark,       setIsDark]       = useState(false);
   const location = useLocation();
 
-  // Scroll-Listener: Hintergrund + Shadow aktivieren
+  // Detect current theme to swap logo image
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const check = () =>
+      setIsDark(document.documentElement.classList.contains('dark'));
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Scroll listener: activate background + shadow
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Mobiles Menü bei Route-Wechsel schließen
+  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileOpen(false);
   }, [location.pathname]);
 
-  // Body-Scroll sperren wenn Menü offen
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isMobileOpen]);
 
-  // ── Active Link Klassen ──────────────────────────────────────
+  // ── Active link classes ──────────────────────────────────────
   const getNavLinkClass = ({ isActive }) =>
     [
       'relative text-sm font-medium transition-colors duration-200',
@@ -166,33 +160,42 @@ const Navbar = () => {
     >
       <nav
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        aria-label="Hauptnavigation"
+        aria-label="Main navigation"
       >
         <div className="flex items-center justify-between h-16 lg:h-20">
 
-          {/* ── Logo ──────────────────────────────────────── */}
+          {/* ── Logo: image + text side by side ─────────── */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 group flex-shrink-0"
-            aria-label="D&S Professionals – Startseite"
+            className="flex items-center gap-3 flex-shrink-0 group"
+            aria-label="D&S Professionals – Home"
           >
-            <motion.div
-              whileHover={{ rotate: -10, scale: 1.1 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-            >
-              <BroomIcon />
-            </motion.div>
+            {/* Logo image: swaps on theme change */}
+            <motion.img
+              key={isDark ? 'logo-dark' : 'logo-light'}
+              src={isDark ? logoDark : logoLight}
+              alt="D&S Professionals Logo"
+              className="h-9 lg:h-11 w-auto object-contain"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+
+            {/* Divider */}
+            <span className="w-px h-8 bg-slate-300 dark:bg-slate-600" aria-hidden="true" />
+
+            {/* Text block */}
             <div className="flex flex-col leading-tight">
-              <span className="text-base font-800 text-[#0D1B2A] dark:text-white tracking-tight">
+              <span className="text-sm font-extrabold text-[#0D1B2A] dark:text-white tracking-tight">
                 D&amp;S Professionals
               </span>
-              <span className="text-[10px] font-400 text-slate-500 dark:text-slate-400 tracking-widest uppercase">
+              <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400 tracking-widest uppercase">
                 Reinigungsdienst Karlsruhe
               </span>
             </div>
           </Link>
 
-          {/* ── Desktop Navigation ────────────────────────── */}
+          {/* ── Desktop navigation ──────────────────────── */}
           <div className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <NavLink
@@ -204,7 +207,7 @@ const Navbar = () => {
                 {({ isActive }) => (
                   <>
                     {link.label}
-                    {/* Aktiver Unterstrich */}
+                    {/* Active underline indicator */}
                     {isActive && (
                       <motion.span
                         layoutId="nav-underline"
@@ -218,18 +221,18 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* ── Rechte Seite: ThemeToggle + CTA ───────────── */}
+          {/* ── Right side: ThemeToggle + CTA ───────────── */}
           <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle />
 
-            {/* CTA Button – Gold */}
+            {/* Gold CTA button */}
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link
                 to="/kontakt"
                 className={[
                   'inline-flex items-center gap-2 px-5 py-2.5 rounded-lg',
                   'bg-[#C9A84C] hover:bg-[#b8943d]',
-                  'text-white text-sm font-700',
+                  'text-white text-sm font-bold',
                   'shadow-md hover:shadow-lg',
                   'transition-all duration-200',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] focus-visible:ring-offset-2',
@@ -254,14 +257,14 @@ const Navbar = () => {
             </motion.div>
           </div>
 
-          {/* ── Mobile: ThemeToggle + Hamburger ───────────── */}
+          {/* ── Mobile: ThemeToggle + Hamburger ─────────── */}
           <div className="flex lg:hidden items-center gap-2">
             <ThemeToggle />
             <motion.button
               onClick={() => setIsMobileOpen((prev) => !prev)}
               aria-expanded={isMobileOpen}
               aria-controls="mobile-menu"
-              aria-label={isMobileOpen ? 'Menü schließen' : 'Menü öffnen'}
+              aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
               className={[
                 'flex items-center justify-center w-10 h-10 rounded-full',
                 'text-slate-700 dark:text-slate-300',
@@ -276,7 +279,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* ── Mobile Menü (Slide-in) ─────────────────────── */}
+        {/* ── Mobile menu (slide-in) ───────────────────── */}
         <AnimatePresence>
           {isMobileOpen && (
             <motion.div
@@ -292,9 +295,21 @@ const Navbar = () => {
                 'border-t border-slate-200 dark:border-slate-700',
               ].join(' ')}
               role="navigation"
-              aria-label="Mobile Navigation"
+              aria-label="Mobile navigation"
             >
               <div className="px-4 py-6 space-y-1">
+
+                {/* Mobile menu header: text-only logo */}
+                <div className="flex flex-col px-4 pb-4 mb-2 border-b border-slate-100 dark:border-slate-800">
+                  <span className="text-base font-extrabold text-[#0D1B2A] dark:text-white tracking-tight">
+                    D&amp;S Professionals
+                  </span>
+                  <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400 tracking-widest uppercase mt-0.5">
+                    Reinigungsdienst Karlsruhe
+                  </span>
+                </div>
+
+                {/* Nav links */}
                 {NAV_LINKS.map((link, i) => (
                   <motion.div
                     key={link.to}
@@ -308,7 +323,7 @@ const Navbar = () => {
                       end={link.to === '/'}
                       className={({ isActive }) =>
                         [
-                          'flex items-center px-4 py-3 rounded-lg text-base font-500',
+                          'flex items-center px-4 py-3 rounded-lg text-base font-medium',
                           'transition-colors duration-200',
                           isActive
                             ? 'bg-[#1B4FD8]/10 text-[#1B4FD8] dark:bg-[#1B4FD8]/20 dark:text-[#1B4FD8]'
@@ -321,7 +336,7 @@ const Navbar = () => {
                   </motion.div>
                 ))}
 
-                {/* Mobile CTA */}
+                {/* Mobile CTA button */}
                 <motion.div
                   custom={NAV_LINKS.length}
                   variants={mobileLinkVariants}
@@ -335,7 +350,7 @@ const Navbar = () => {
                       'flex items-center justify-center gap-2',
                       'w-full px-4 py-3 rounded-lg',
                       'bg-[#C9A84C] hover:bg-[#b8943d]',
-                      'text-white text-base font-700',
+                      'text-white text-base font-bold',
                       'transition-colors duration-200',
                     ].join(' ')}
                   >

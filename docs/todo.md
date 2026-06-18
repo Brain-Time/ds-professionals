@@ -48,18 +48,22 @@
 ## 🟠 Schritt 3 — Layout (Navbar & Footer) ✅ ERLEDIGT
 
 - [x] `src/components/layout/Navbar.jsx` ✅
-      → Logo (SVG Besen + Text + Untertitel)
+      → Logo: echtes Bild (_b.png hell / _a.png dunkel) + Text + Untertitel
+      → Automatischer Logo-Swap via MutationObserver (Theme-Wechsel)
       → Desktop Navigation Links (Home | Dienstleistungen | Über uns | Kontakt)
       → `ThemeToggle` integriert
       → Mobile Hamburger Menu (Framer Motion Slide-in)
+      → Mobile Menü Header: Text-Logo (kein Bild)
       → Active Link Highlighting via `useLocation` + `layoutId`
       → Sticky + `backdrop-blur` beim Scrollen
       → CTA Button "Angebot anfragen" (Gold)
       → Body-Scroll-Lock bei geöffnetem Menü
       → Menü schließt bei Route-Wechsel
+      → Alle Kommentare auf Englisch
 
 - [x] `src/components/layout/Footer.jsx` ✅
-      → Logo + Slogan „Mehr als nur sauber"
+      → Logo: echtes Bild (_a.png weiß/gold) + Divider + Text + Untertitel
+      → Slogan „Mehr als nur sauber"
       → 3 Spalten: Logo+Text | Navigation+Services | Kontakt
       → Services Links (alle 6 Dienstleistungen)
       → Kontaktdaten (Adresse, Tel, E-Mail, Öffnungszeiten)
@@ -67,6 +71,7 @@
       → Legal Links: Impressum · Datenschutz · AGB
       → Referenzen-Badge (Indutec · Iwago · Wisag)
       → Framer Motion `whileInView` Fade-in
+      → Alle Kommentare auf Englisch
 
 - [x] `src/components/layout/Layout.jsx` ✅
       → `<Navbar />` + `<main>` + `<Footer />`
@@ -75,14 +80,14 @@
       → `min-h-screen flex-col` Layout (sticky Footer)
       → `pt-16 lg:pt-20` für Navbar-Kompensation
 
-- [x] `src/main.jsx` (Snippet) ✅
+- [x] `src/main.jsx` ✅
       → React 18 `createRoot`
       → `HelmetProvider` + `ThemeProvider` + `BrowserRouter`
 
-- [x] `src/App.jsx` (Snippet) ✅
+- [x] `src/App.jsx` ✅
       → `Layout`-Wrapper mit React Router `<Routes>`
 
-- [x] `src/styles/globals.css` (Snippet) ✅
+- [x] `src/styles/globals.css` ✅
       → Tailwind v4 Dark Mode: `@custom-variant dark`
 
 ---
@@ -148,29 +153,15 @@
 - [x] `src/components/sections/CTASection.jsx` ✅
       → „Bereit für professionelle Sauberkeit?"
       → Gold CTA Button „Jetzt Angebot anfragen"
-      → Dunkelblauer Kontrasthintergrund
-      → Framer Motion Animationen
-
-### Noch offen aus Schritt 4:
-- [ ] `src/components/ui/Button.jsx`
-      → Varianten: `primary` | `secondary` | `gold` | `outline`
-      → Größen: `sm` | `md` | `lg`
-      → `as` Prop (Link vs Button)
-      → Framer Motion Hover-Animation
-
-- [ ] `src/components/ui/SectionWrapper.jsx`
-      → Framer Motion `whileInView` Scroll-Fade
-      → `viewport={{ once: true }}`
-      → Konfigurierbare Delay-Prop
-      → Wiederverwendbar für alle Sektionen
-
-- [ ] `src/pages/HomePage.jsx`
-      → Alle Sektionen zusammengesetzt
-      → React Helmet (SEO Meta-Tags)
+      → Sekundärer Button „Direkt anrufen"
+      → Trust-Note: Kostenlos · 24h Antwort · Karlsruhe
+      → Dunkelblauer Kontrasthintergrund + Blur-Dekor
+      → Framer Motion staggered Animationen via `useInView`
+      → Alle Kommentare auf Englisch
 
 ---
 
-## 🟣 Schritt 5 — ServicesPage & ServiceDetail ← **NEXT**
+## 🟣 Schritt 5 — UI Components & Pages ← **NEXT**
 
 - [ ] `src/components/ui/Button.jsx`
       → Varianten: `primary` | `secondary` | `gold` | `outline`
