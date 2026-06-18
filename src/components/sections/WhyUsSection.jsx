@@ -21,9 +21,8 @@ const USP_ITEMS = [
   {
     id: 1,
     icon: '🏆',
-    title: 'Langjährige Erfahrung',
-    description:
-      'Über 10 Jahre Erfahrung mit namhaften Unternehmen wie Indutec, Iwago und Wisag. Wir kennen die Anforderungen der Industrie.',
+    title: 'Erfahrung & Kompetenz',
+    description: 'Über 6 Jahre praktische Erfahrung in der Reinigungsbranche. Wir kennen die Anforderungen verschiedenster Branchen — von Gastronomie bis Gewerbe.',
     color: '#1B4FD8',
   },
   {
@@ -53,7 +52,7 @@ const USP_ITEMS = [
 ];
 
 // ── Referenz-Logos (Text-basiert) ──────────────────────────────
-const REFERENCES = ['Indutec', 'Iwago', 'Wisag', 'u.v.m.'];
+const REFERENCES = ['Glanzgruppe','Juric Gebäudereinigung', 'Die Wohlfühlberater', 'Ughur Kitchen', 'u.v.m.'];
 
 // ── Animation Varianten ────────────────────────────────────────
 const containerVariants = {

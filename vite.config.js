@@ -1,17 +1,18 @@
 /**
  * vite.config.js
  * ─────────────────────────────────────────────────────────────
- * Performance-optimierter Vite Build + HMR WebSocket Fix
+ * Vite 8 + Rolldown kompatibel
+ * manualChunks als Funktion (Objekt-Syntax nicht mehr supported)
  * ─────────────────────────────────────────────────────────────
  */
 
-import { defineConfig }  from 'vite';
-import react             from '@vitejs/plugin-react';
-import tailwindcss       from '@tailwindcss/vite';    // ← NEU ✅
+import { defineConfig } from 'vite';
+import react            from '@vitejs/plugin-react';
+import tailwindcss      from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [
-    tailwindcss(),   // ← muss VOR react() stehen ✅
+    tailwindcss(),  // ← muss VOR react() stehen
     react(),
   ],
 
@@ -26,31 +27,41 @@ export default defineConfig({
     },
   },
 
-  // ── Preview Server (nach npm run build) ─────────────────
+  // ── Preview Server ───────────────────────────────────────
   preview: {
     port: 4173,
   },
 
+  // ── Build ────────────────────────────────────────────────
   build: {
-    target: 'es2020',
-    chunkSizeWarningLimit: 500,
+    target:               'es2020',
+    chunkSizeWarningLimit: 600,
+    minify:               'oxc',
+    sourcemap:            false,
 
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react':  ['react', 'react-dom'],
-          'vendor-router': ['react-router-dom'],
-          'vendor-motion': ['framer-motion'],
-          'vendor-helmet': ['react-helmet-async'],
-          'vendor-form':   ['react-hook-form', '@emailjs/browser'],
+        // Vite 8 / Rolldown: manualChunks muss eine Funktion sein
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react-dom') || id.includes('react/'))
+              return 'vendor-react';
+            if (id.includes('react-router-dom'))
+              return 'vendor-router';
+            if (id.includes('framer-motion'))
+              return 'vendor-motion';
+            if (id.includes('react-helmet-async'))
+              return 'vendor-helmet';
+            if (id.includes('react-hook-form') || id.includes('@emailjs'))
+              return 'vendor-form';
+          }
         },
+
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
     },
-
-    minify:    'esbuild',
-    sourcemap: false,
   },
 });
+

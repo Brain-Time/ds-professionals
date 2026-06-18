@@ -53,10 +53,10 @@ const trustVariants = {
 
 // ── Trust-Bar Daten ────────────────────────────────────────────
 const TRUST_ITEMS = [
-  { icon: '🏆', label: '10+ Jahre', sub: 'Erfahrung'   },
-  { icon: '👥', label: '200+',      sub: 'Kunden'      },
-  { icon: '🛡️', label: 'Versichert', sub: 'Vollkasko'  },
-  { icon: '⭐', label: '4.9 / 5',   sub: 'Bewertung'   },
+  { icon: '📅', label: '6+ Jahre',  sub: 'Erfahrung'   },
+  { icon: '✅', label: '20+',       sub: 'Projekte'     },
+  { icon: '🛡️', label: 'Versichert', sub: 'Zuverlässig' },
+  { icon: '⭐', label: '5.0 / 5',   sub: 'Bewertung'   },
 ];
 
 // ── HeroSection Komponente ─────────────────────────────────────
@@ -159,7 +159,7 @@ const HeroSection = () => {
             variants={itemVariants}
             className="text-sm text-white/50 mb-10"
           >
-            Vertraut von Indutec · Iwago · Wisag und vielen weiteren namhaften Unternehmen.
+            Vertraut von Indutec · Iwago · Wisag · Glanzgruppe · Juric Gebäudereinigung · Die Wohlfühlberater · Ughur Kitchen und vielen weiteren.
           </motion.p>
 
           {/* ── CTA Buttons ───────────────────────────────── */}

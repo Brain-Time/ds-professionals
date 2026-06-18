@@ -9,44 +9,47 @@
 const testimonials = [
   {
     id: 1,
-    name: 'Marcus Weber',
-    role: 'Facility Manager',
-    company: 'Indutec GmbH',
-    initials: 'MW',
+    name: 'Marko Juric',
+    role: 'Inhaber',
+    company: 'Juric Gebäudereinigung',
+    initials: 'MJ',
     rating: 5,
     text:
-      'D&S Professionals reinigt unsere Produktionshallen seit über zwei Jahren. ' +
-      'Die Zuverlässigkeit und Qualität sind hervorragend – pünktlich, gründlich ' +
-      'und immer flexibel bei kurzfristigen Anfragen. Absolute Empfehlung!',
-    service: 'Industriereinigung',
-    color: '#1B4FD8', // Hintergrundfarbe für Avatar
+      'Die Zusammenarbeit ist sehr zuverlässig und professionell. Die vereinbarten ' +
+      'Leistungen werden sorgfältig, pünktlich und in hoher Qualität ausgeführt. ' +
+      'Besonders schätzen wir die flexible Kommunikation und die vertrauensvolle ' +
+      'Zusammenarbeit. Wir empfehlen das Unternehmen gerne weiter.',
+    service: 'Gebäudereinigung',
+    color: '#1B4FD8',
   },
   {
     id: 2,
-    name: 'Sandra Hoffmann',
-    role: 'Geschäftsführerin',
-    company: 'FitLife Karlsruhe',
-    initials: 'SH',
+    name: 'Die Wohlfühlberater',
+    role: 'Kunde',
+    company: 'Die Wohlfühlberater',
+    initials: 'WB',
     rating: 5,
     text:
-      'Unsere Mitglieder loben regelmäßig die Sauberkeit im Studio. Das Team von ' +
-      'D&S arbeitet früh morgens, bevor der Betrieb beginnt – diskret, effizient ' +
-      'und immer mit einem Lächeln. Wir sind rundum zufrieden.',
-    service: 'Fitnessstudio-Reinigung',
+      'Wir sind mit der Zusammenarbeit sehr zufrieden. Die Arbeiten werden zuverlässig, ' +
+      'gründlich und professionell ausgeführt. Absprachen funktionieren unkompliziert ' +
+      'und auch kurzfristige Anforderungen werden stets lösungsorientiert umgesetzt. ' +
+      'Wir können die Zusammenarbeit uneingeschränkt weiterempfehlen.',
+    service: 'Reinigungsservice',
     color: '#0D1B2A',
   },
   {
     id: 3,
-    name: 'Dr. Thomas Keller',
-    role: 'Praxisinhaber',
-    company: 'Hausarztpraxis Keller',
-    initials: 'TK',
+    name: 'Ughur Kitchen',
+    role: 'Kunde',
+    company: 'Ughur Kitchen',
+    initials: 'UK',
     rating: 5,
     text:
-      'In einer Arztpraxis ist Hygiene das A und O. D&S Professionals erfüllt ' +
-      'alle Anforderungen an medizinische Reinigung und Desinfektion. ' +
-      'Professionell, diskret und immer zuverlässig. Ich kann sie uneingeschränkt empfehlen.',
-    service: 'Praxisreinigung',
+      'Wir sind sehr zufrieden mit der zuverlässigen und gründlichen Arbeitsweise. ' +
+      'Die Zusammenarbeit ist professionell, freundlich und unkompliziert. ' +
+      'Auf Absprachen ist jederzeit Verlass und die Reinigungsergebnisse überzeugen ' +
+      'uns sehr. Wir können das Unternehmen gerne weiterempfehlen.',
+    service: 'Küchenreinigung',
     color: '#C9A84C',
   },
 ];

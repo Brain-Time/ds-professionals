@@ -1,5 +1,5 @@
 // src/pages/AboutPage.jsx
-// About page — company history, values, references, team
+// Über uns – D&S Professionals
 
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
@@ -17,44 +17,35 @@ const fadeInUp = {
 };
 
 const fadeInLeft = {
-  hidden: { opacity: 0, x: -40 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.7, ease: 'easeOut' },
-  },
+  hidden:  { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
 const fadeInRight = {
-  hidden: { opacity: 0, x: 40 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.7, ease: 'easeOut' },
-  },
+  hidden:  { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-// Company core values
 const values = [
   {
     id: 1,
     icon: '🏆',
     title: 'Qualität',
-    desc: 'Höchste Reinigungsstandards bei jedem Auftrag — egal ob kleines Büro oder große Industriehalle.',
+    desc: 'Höchste Reinigungsstandards bei jedem Auftrag — egal ob kleines Büro oder große Gewerbefläche.',
   },
   {
     id: 2,
     icon: '🤝',
     title: 'Verlässlichkeit',
-    desc: 'Pünktlich, zuverlässig, diskret. Unsere Kunden können sich auf uns verlassen — jeden Tag.',
+    desc: 'Pünktlich, gründlich, diskret. Unsere Kunden können sich auf uns verlassen — jeden Tag.',
   },
   {
     id: 3,
-    icon: '💡',
-    title: 'Innovation',
-    desc: 'Modernste Reinigungstechnologien und umweltfreundliche Mittel für nachhaltige Ergebnisse.',
+    icon: '🔄',
+    title: 'Flexibilität',
+    desc: 'Täglich, wöchentlich oder auf Abruf — wir passen uns Ihrem Betrieb an. Kurzfristige Änderungen? Kein Problem.',
   },
   {
     id: 4,
@@ -64,76 +55,14 @@ const values = [
   },
 ];
 
-// Company milestones / history
-const milestones = [
-  {
-    year: '2009',
-    title: 'Gründung',
-    desc: 'D&S Professionals wird in Karlsruhe gegründet. Start mit Büroreinigung für lokale KMUs.',
-  },
-  {
-    year: '2013',
-    title: 'Erweiterung',
-    desc: 'Ausbau auf Industriereinigung und Hallenreinigung. Erste Großaufträge in der Region.',
-  },
-  {
-    year: '2017',
-    title: 'Wachstum',
-    desc: 'Team wächst auf 20+ Mitarbeiter. Neue Sparte: Fitnessstudio- und Praxisreinigung.',
-  },
-  {
-    year: '2021',
-    title: 'Zertifizierung',
-    desc: 'Erweiterung des Leistungsportfolios. Modernisierung des Maschinenparks.',
-  },
-  {
-    year: '2024',
-    title: 'Heute',
-    desc: '30+ Mitarbeiter, 150+ zufriedene Kunden, 7 Dienstleistungsbereiche — und wir wachsen weiter.',
-  },
-];
-
-// Reference / partner companies
 const references = [
-  { id: 1, name: 'Indutec', sector: 'Industrie', icon: '🏭' },
-  { id: 2, name: 'Iwago',   sector: 'Gewerbe',   icon: '🏢' },
-  { id: 3, name: 'Wisag',   sector: 'Facility',  icon: '🏗️' },
-  { id: 4, name: 'FitLife', sector: 'Fitness',   icon: '💪' },
-  { id: 5, name: 'MedCenter Karlsruhe', sector: 'Medizin', icon: '🏥' },
-  { id: 6, name: 'BildungsZentrum KA', sector: 'Bildung', icon: '🎓' },
-];
-
-// Team members
-const team = [
-  {
-    id: 1,
-    name: 'Derman S.',
-    role: 'Geschäftsführer',
-    initials: 'DS',
-    color: 'bg-blue-600',
-    desc: '15+ Jahre Erfahrung in der Gebäudereinigung. Verantwortlich für Strategie & Qualitätssicherung.',
-  },
-  {
-    id: 2,
-    name: 'Anna K.',
-    role: 'Teamleiterin Industrie',
-    initials: 'AK',
-    color: 'bg-amber-600',
-    desc: 'Spezialistin für Industriereinigung und Hallenreinigung. Koordiniert 12 Mitarbeiter.',
-  },
-  {
-    id: 3,
-    name: 'Marco B.',
-    role: 'Teamleiter Gewerbe',
-    initials: 'MB',
-    color: 'bg-emerald-600',
-    desc: 'Experte für Büro- und Praxisreinigung. Ansprechpartner für Gewerbekunden.',
-  },
+  { id: 1, name: 'Juric Gebäudereinigung', sector: 'Gebäudereinigung', icon: '🏢' },
+  { id: 2, name: 'Die Wohlfühlberater',    sector: 'Dienstleistung',   icon: '✨' },
+  { id: 3, name: 'Ughur Kitchen',          sector: 'Gastronomie',      icon: '🍽️' },
 ];
 
 // ─── Sub-Components ───────────────────────────────────────────────────────────
 
-// Single value card
 function ValueCard({ value, index }) {
   return (
     <motion.div
@@ -157,72 +86,6 @@ function ValueCard({ value, index }) {
   );
 }
 
-// Single timeline milestone
-function Milestone({ milestone, index, isLast }) {
-  return (
-    <motion.div
-      variants={fadeInUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-40px' }}
-      custom={index * 0.1}
-      className="relative flex gap-6"
-    >
-      {/* Timeline line */}
-      <div className="flex flex-col items-center">
-        <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center
-                        text-white font-bold text-xs shrink-0 shadow-md shadow-amber-200
-                        dark:shadow-amber-900/30">
-          {milestone.year}
-        </div>
-        {!isLast && (
-          <div className="w-0.5 flex-1 bg-amber-200 dark:bg-amber-900/40 mt-2" />
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="pb-10">
-        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
-          {milestone.title}
-        </h3>
-        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-          {milestone.desc}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
-
-// Single team member card
-function TeamCard({ member, index }) {
-  return (
-    <motion.div
-      variants={fadeInUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
-      custom={index * 0.15}
-      className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-md
-                 border border-slate-100 dark:border-slate-700 text-center"
-    >
-      {/* Avatar */}
-      <div className={`w-16 h-16 rounded-full ${member.color} flex items-center
-                       justify-center text-white font-bold text-xl mx-auto mb-4 shadow-lg`}>
-        {member.initials}
-      </div>
-      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-        {member.name}
-      </h3>
-      <p className="text-amber-600 dark:text-amber-400 text-sm font-medium mb-3">
-        {member.role}
-      </p>
-      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-        {member.desc}
-      </p>
-    </motion.div>
-  );
-}
-
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function AboutPage() {
   return (
@@ -232,12 +95,12 @@ export default function AboutPage() {
         <title>Über uns — D&S Professionals | Reinigungsdienst Karlsruhe</title>
         <meta
           name="description"
-          content="Lernen Sie D&S Professionals kennen: 15+ Jahre Erfahrung, 30+ Mitarbeiter, 150+ zufriedene Kunden. Ihr zuverlässiger Reinigungsdienst in Karlsruhe."
+          content="D&S Professionals — Ihr zuverlässiger Reinigungsdienst in Karlsruhe. Gegründet 2025, mit über 6 Jahren Branchenerfahrung. Qualität, Flexibilität und persönliche Betreuung."
         />
         <meta property="og:title" content="Über uns — D&S Professionals" />
         <meta
           property="og:description"
-          content="Professionelle Reinigung in Karlsruhe seit 2009. Qualität, Verlässlichkeit und Leidenschaft."
+          content="Professionelle Reinigung in Karlsruhe. Qualität, Verlässlichkeit und Leidenschaft."
         />
         <meta name="robots" content="index, follow" />
       </Helmet>
@@ -247,17 +110,13 @@ export default function AboutPage() {
         {/* ── Hero ── */}
         <section className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900
                             pt-32 pb-20 overflow-hidden">
-          {/* Decorative blurs */}
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-10 right-10 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
             <motion.nav
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              custom={0}
+              variants={fadeInUp} initial="hidden" animate="visible" custom={0}
               className="flex items-center gap-2 text-sm text-slate-400 mb-6"
               aria-label="Breadcrumb"
             >
@@ -267,10 +126,7 @@ export default function AboutPage() {
             </motion.nav>
 
             <motion.h1
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              custom={0.1}
+              variants={fadeInUp} initial="hidden" animate="visible" custom={0.1}
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
             >
               Mehr als nur{' '}
@@ -278,29 +134,23 @@ export default function AboutPage() {
             </motion.h1>
 
             <motion.p
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              custom={0.2}
+              variants={fadeInUp} initial="hidden" animate="visible" custom={0.2}
               className="text-xl text-slate-300 max-w-2xl leading-relaxed"
             >
-              Seit 2009 stehen wir für professionelle Reinigung in Karlsruhe und Umgebung.
-              Lernen Sie das Team kennen, das täglich für Sauberkeit und Ordnung sorgt.
+              D&S Professionals steht für gründliche Reinigung, klare Absprachen
+              und persönliche Betreuung — direkt aus Karlsruhe.
             </motion.p>
 
             {/* Stats row */}
             <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              custom={0.3}
+              variants={fadeInUp} initial="hidden" animate="visible" custom={0.3}
               className="flex flex-wrap gap-8 mt-10"
             >
               {[
-                { value: '15+', label: 'Jahre Erfahrung' },
-                { value: '30+', label: 'Mitarbeiter' },
-                { value: '150+', label: 'Kunden' },
-                { value: '7',   label: 'Dienstleistungen' },
+                { value: '2025',  label: 'Gegründet'           },
+                { value: '6+',    label: 'Jahre Erfahrung'     },
+                { value: '20+',   label: 'Abgeschlossene Projekte' },
+                { value: '5+',    label: 'Zufriedene Kunden'   },
               ].map((stat) => (
                 <div key={stat.label}>
                   <div className="text-3xl font-extrabold text-amber-400">{stat.value}</div>
@@ -318,10 +168,8 @@ export default function AboutPage() {
 
               {/* Left: Text */}
               <motion.div
-                variants={fadeInLeft}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
+                variants={fadeInLeft} initial="hidden"
+                whileInView="visible" viewport={{ once: true, margin: '-80px' }}
               >
                 <span className="inline-block text-amber-500 font-semibold text-sm
                                  uppercase tracking-widest mb-4">
@@ -329,44 +177,81 @@ export default function AboutPage() {
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900
                                dark:text-white mb-6 leading-tight">
-                  Gegründet mit einer Vision —<br />
-                  <span className="text-amber-500">gewachsen durch Vertrauen</span>
+                  Junges Unternehmen —{' '}
+                  <span className="text-amber-500">erfahrenes Team</span>
                 </h2>
                 <div className="space-y-4 text-slate-600 dark:text-slate-400 leading-relaxed">
                   <p>
-                    D&S Professionals wurde 2009 in Karlsruhe mit einer klaren Mission gegründet:
-                    professionelle Reinigungsdienstleistungen anzubieten, auf die sich Unternehmen
-                    wirklich verlassen können.
+                    D&S Professionals wurde 2025 in Karlsruhe gegründet — mit einer klaren Vision:
+                    Reinigungsdienstleistungen anzubieten, auf die sich Unternehmen wirklich
+                    verlassen können.
                   </p>
                   <p>
-                    Was als kleines Team mit großen Ambitionen begann, ist heute ein etabliertes
-                    Unternehmen mit über 30 Mitarbeitern und mehr als 150 zufriedenen Kunden —
-                    von Industriebetrieben über Fitnessstudios bis hin zu Arztpraxen.
+                    Hinter dem Unternehmen steht Inhaber Ainikaer Kasimujiang, der über
+                    <strong className="text-slate-800 dark:text-white"> 6 Jahre Erfahrung </strong>
+                    in der Reinigungsbranche mitbringt. Diese Erfahrung fliesst in jeden
+                    Auftrag ein — von der ersten Absprache bis zum letzten Handgriff.
                   </p>
                   <p>
-                    Unser Erfolg basiert auf einem einfachen Prinzip: Wir behandeln jeden Auftrag
-                    so, als wäre es unser eigenes Unternehmen, das gereinigt wird.
+                    Unser Anspruch ist nicht Masse, sondern Qualität: zuverlässig, pünktlich
+                    und mit Blick fürs Detail. Als Einzelunternehmen profitieren unsere Kunden
+                    von direkter Kommunikation und persönlicher Betreuung — ohne Umwege.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Right: Timeline */}
+              {/* Right: Key Points */}
               <motion.div
-                variants={fadeInRight}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-                className="relative"
+                variants={fadeInRight} initial="hidden"
+                whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+                className="space-y-4"
               >
-                {milestones.map((milestone, index) => (
-                  <Milestone
-                    key={milestone.year}
-                    milestone={milestone}
-                    index={index}
-                    isLast={index === milestones.length - 1}
-                  />
+                {[
+                  {
+                    icon: '📍',
+                    title: 'Standort Karlsruhe',
+                    desc:  'Wicherstr. 19, 76185 Karlsruhe — lokal verwurzelt, regional aktiv.',
+                  },
+                  {
+                    icon: '🎯',
+                    title: 'Persönliche Betreuung',
+                    desc:  'Direkter Kontakt zum Inhaber. Keine Hotlines, keine Zwischenstufen.',
+                  },
+                  {
+                    icon: '⚡',
+                    title: 'Schnelle Reaktionszeit',
+                    desc:  'Kurzfristige Anfragen? Wir melden uns innerhalb von 24 Stunden.',
+                  },
+                  {
+                    icon: '💼',
+                    title: 'Maßgeschneiderte Lösungen',
+                    desc:  'Jeder Betrieb ist anders. Wir erstellen individuelle Reinigungskonzepte.',
+                  },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    className="flex items-start gap-4 p-5 rounded-2xl
+                               bg-slate-50 dark:bg-slate-700/50
+                               border border-slate-200 dark:border-slate-600
+                               hover:border-amber-400/40 transition-colors duration-200"
+                  >
+                    <span className="text-2xl shrink-0">{item.icon}</span>
+                    <div>
+                      <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </motion.div>
                 ))}
               </motion.div>
+
             </div>
           </div>
         </section>
@@ -374,14 +259,10 @@ export default function AboutPage() {
         {/* ── Values Section ── */}
         <section className="py-20 bg-slate-50 dark:bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
             <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-80px' }}
-              custom={0}
-              className="text-center mb-14"
+              variants={fadeInUp} initial="hidden"
+              whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+              custom={0} className="text-center mb-14"
             >
               <span className="inline-block text-amber-500 font-semibold text-sm
                                uppercase tracking-widest mb-4">
@@ -397,7 +278,6 @@ export default function AboutPage() {
               </p>
             </motion.div>
 
-            {/* Values Grid */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
                 <ValueCard key={value.id} value={value} index={index} />
@@ -409,101 +289,58 @@ export default function AboutPage() {
         {/* ── References Section ── */}
         <section className="py-20 bg-white dark:bg-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
             <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-80px' }}
-              custom={0}
-              className="text-center mb-14"
+              variants={fadeInUp} initial="hidden"
+              whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+              custom={0} className="text-center mb-14"
             >
               <span className="inline-block text-amber-500 font-semibold text-sm
                                uppercase tracking-widest mb-4">
-                Vertrauen seit Jahren
+                Vertrauen, das zählt
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900
                              dark:text-white leading-tight">
                 Unsere Referenzen
               </h2>
               <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-                Namhafte Unternehmen aus verschiedenen Branchen vertrauen auf
+                Unternehmen aus verschiedenen Branchen vertrauen auf
                 unsere Zuverlässigkeit und Qualität.
               </p>
             </motion.div>
 
-            {/* References Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
               {references.map((ref, index) => (
                 <motion.div
                   key={ref.id}
-                  variants={fadeInUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: '-40px' }}
-                  custom={index * 0.08}
-                  className="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-5
+                  variants={fadeInUp} initial="hidden"
+                  whileInView="visible" viewport={{ once: true, margin: '-40px' }}
+                  custom={index * 0.1}
+                  className="bg-slate-50 dark:bg-slate-700/50 rounded-2xl p-6
                              border border-slate-100 dark:border-slate-600
-                             flex flex-col items-center gap-2 text-center
+                             flex flex-col items-center gap-3 text-center
                              hover:border-amber-400/50 hover:shadow-md
                              transition-all duration-300"
                 >
-                  <span className="text-3xl">{ref.icon}</span>
+                  <span className="text-4xl">{ref.icon}</span>
                   <span className="font-bold text-slate-900 dark:text-white text-sm">
                     {ref.name}
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                  <span className="text-xs text-slate-500 dark:text-slate-400 px-3 py-1
+                                   bg-slate-200 dark:bg-slate-600 rounded-full">
                     {ref.sector}
                   </span>
                 </motion.div>
               ))}
             </div>
 
-            {/* Trust note */}
             <motion.p
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={0.5}
+              variants={fadeInUp} initial="hidden"
+              whileInView="visible" viewport={{ once: true }}
+              custom={0.4}
               className="text-center text-slate-500 dark:text-slate-400 text-sm mt-8"
             >
-              + viele weitere Kunden aus Industrie, Gewerbe und dem Gesundheitswesen
+              + weitere Kunden aus Gastronomie, Gewerbe und dem Dienstleistungsbereich
             </motion.p>
-          </div>
-        </section>
-
-        {/* ── Team Section ── */}
-        <section className="py-20 bg-slate-50 dark:bg-slate-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-80px' }}
-              custom={0}
-              className="text-center mb-14"
-            >
-              <span className="inline-block text-amber-500 font-semibold text-sm
-                               uppercase tracking-widest mb-4">
-                Die Menschen dahinter
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900
-                             dark:text-white leading-tight">
-                Unser Team
-              </h2>
-              <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-                Erfahrene Fachkräfte, die mit Leidenschaft und Präzision arbeiten.
-              </p>
-            </motion.div>
-
-            {/* Team Grid */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              {team.map((member, index) => (
-                <TeamCard key={member.id} member={member} index={index} />
-              ))}
-            </div>
           </div>
         </section>
 
@@ -511,10 +348,8 @@ export default function AboutPage() {
         <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+              variants={fadeInUp} initial="hidden"
+              whileInView="visible" viewport={{ once: true }}
               custom={0}
             >
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
@@ -535,13 +370,13 @@ export default function AboutPage() {
                   Jetzt Angebot anfragen
                 </Link>
                 <a
-                  href="tel:+49XXXXXXXXX"
+                  href="tel:+4917914555532"
                   className="inline-flex items-center justify-center gap-2
                              border-2 border-white/30 hover:border-white/60
                              text-white font-bold px-8 py-4 rounded-xl
                              transition-colors duration-200"
                 >
-                  📞 Direkt anrufen
+                  📞 +49 179 1455532
                 </a>
               </div>
             </motion.div>

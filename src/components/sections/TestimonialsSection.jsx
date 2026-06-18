@@ -170,7 +170,7 @@ const Testimonials = () => {
             Was unsere Kunden sagen
           </h2>
           <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-            Über 200 zufriedene Kunden vertrauen auf D&amp;S Professionals.
+            Unsere Kunden sprechen für sich — echte Bewertungen, echte Ergebnisse.
             Hier sind einige ihrer Erfahrungen.
           </p>
         </motion.div>
@@ -210,10 +210,10 @@ const Testimonials = () => {
               ))}
             </div>
             <span className="text-sm font-bold text-[#0D1B2A] dark:text-white">
-              4.9 / 5
+              5.0 / 5
             </span>
             <span className="text-sm text-slate-500 dark:text-slate-400">
-              Durchschnitt aus 200+ Bewertungen
+              Durchschnitt aus unseren Kundenbewertungen
             </span>
           </div>
         </motion.div>

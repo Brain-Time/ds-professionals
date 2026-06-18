@@ -4,46 +4,46 @@
 
 /**
  * @typedef {Object} Stat
- * @property {string} id      - Eindeutige ID
- * @property {number} value   - Zielwert für den Counter (Endwert der Animation)
- * @property {string} suffix  - Einheit/Suffix nach dem Wert (z.B. "+", "%", "k")
- * @property {string} label   - Beschriftung unter dem Wert
- * @property {string} icon    - Emoji-Icon
- * @property {string} desc    - Kurze Erläuterung (Tooltip / Unterzeile)
+ * @property {string} id       - Eindeutige ID
+ * @property {number} value    - Zielwert für den Counter (Endwert der Animation)
+ * @property {string} suffix   - Einheit/Suffix nach dem Wert (z.B. "+", "%", "k")
+ * @property {string} label    - Beschriftung unter dem Wert
+ * @property {string} icon     - Emoji-Icon
+ * @property {string} sublabel - Kurze Erläuterung (Unterzeile)
  */
 
-export const stats = [
+const stats = [
   {
     id: 'customers',
-    value: 150,
+    value: 5,
     suffix: '+',
     label: 'Zufriedene Kunden',
     icon: '🤝',
-    desc: 'Unternehmen vertrauen auf unsere Reinigungsdienstleistungen',
+    sublabel: 'Unternehmen vertrauen auf unsere Qualität',
   },
   {
     id: 'experience',
-    value: 15,
+    value: 6,
     suffix: '+',
     label: 'Jahre Erfahrung',
     icon: '📅',
-    desc: 'Jahrelange Erfahrung bei namhaften Unternehmen (Indutec, Iwago, Wisag)',
-  },
-  {
-    id: 'employees',
-    value: 30,
-    suffix: '+',
-    label: 'Mitarbeiter',
-    icon: '👥',
-    desc: 'Geschultes und zuverlässiges Reinigungspersonal',
+    sublabel: 'Erfahrung bei namhaften Unternehmen',
   },
   {
     id: 'projects',
-    value: 500,
+    value: 20,
     suffix: '+',
     label: 'Abgeschlossene Projekte',
     icon: '✅',
-    desc: 'Erfolgreich durchgeführte Reinigungs- und Sonderaufträge',
+    sublabel: 'Erfolgreich durchgeführte Aufträge',
+  },
+  {
+    id: 'availability',
+    value: 100,
+    suffix: '%',
+    label: 'Zuverlässigkeit',
+    icon: '🛡️',
+    sublabel: 'Pünktlich & gründlich — ohne Ausnahme',
   },
 ];
 
