@@ -208,31 +208,46 @@
 
 ---
 
-## ⚫ Schritt 6 — AboutPage & ContactPage ← **NEXT**
+## 🟤 Schritt 6 — AboutPage & ContactPage ✅ ERLEDIGT
 
-- [ ] `src/pages/AboutPage.jsx`
+- [x] `src/pages/AboutPage.jsx` ✅
       → Unternehmensgeschichte
       → Referenzen (Indutec, Iwago, Wisag)
       → Werte & Versprechen
-      → Team-Bereich (optional)
+      → Team-Bereich
 
-- [ ] `src/pages/ContactPage.jsx`
+- [x] `src/pages/ContactPage.jsx` ✅
       → Kontaktformular (React Hook Form)
-      → Validierung (required, email format)
+      → Validierung (required, email format, minLength)
       → EmailJS Integration
-      → Erfolgs-/Fehlermeldung
-      → Karte (Google Maps Embed oder Leaflet)
-      → Öffnungszeiten
+      → Erfolgs-/Fehlermeldung (AnimatePresence)
+      → Google Maps Embed (Wicherstr. 19, 76185 Karlsruhe)
+      → Öffnungszeiten-Karte
       → Adresse + Telefon + E-Mail
 
-- [ ] `src/hooks/useContactForm.js`
+- [x] `src/hooks/useContactForm.js` ✅
       → React Hook Form Logik
       → EmailJS `send()` Aufruf
       → Loading / Success / Error States
+      → `.env` Variablen (VITE_EMAILJS_*)
+      → Template-Parameter (from_name, from_email, from_phone, service_type, message)
+
+- [x] Legal Pages ✅
+      → `src/pages/ImpressumPage.jsx`
+      → `src/pages/DatenschutzPage.jsx`
+      → `src/pages/AGBPage.jsx`
+      → `src/pages/NotFoundPage.jsx` (404)
+
+- [x] `src/App.jsx` ✅ (aktualisiert)
+      → Alle Routen eingebunden
+
+- [x] GitHub Push ✅
+      → `.env` in `.gitignore`
+      → Alle Änderungen committed & gepusht
 
 ---
 
-## ⚪ Schritt 7 — Animationen & Polish
+## ⚫ Schritt 7 — Animationen & Polish ← **NEXT**
 
 - [ ] Alle Sektionen mit `SectionWrapper` wrappen
 - [ ] Stagger-Animationen für Listen (ServiceCards, Features)
@@ -294,7 +309,7 @@
       → Best Practices = 100 ✅
 
 - [ ] Vercel Deployment
-      → GitHub Repo erstellen
+      → GitHub Repo erstellen ✅
       → Vercel mit GitHub verbinden
       → Environment Variables setzen (EmailJS Keys)
       → Custom Domain (optional)

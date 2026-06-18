@@ -228,22 +228,22 @@ const Footer = () => {
               <li className="flex items-center gap-3">
                 <span className="text-[#1B4FD8] flex-shrink-0"><PhoneIcon /></span>
                 <a
-                  href="tel:+4972112345678"
+                  href="tel:+4917914555532"
                   className="text-sm text-slate-400 hover:text-white transition-colors duration-200"
                   aria-label="Telefonnummer anrufen"
                 >
-                  +49 (0) 721 – Auf Anfrage
+                  +49 179 1455532
                 </a>
-              </li>
+                              </li>
 
               {/* Email */}
               <li className="flex items-center gap-3">
                 <span className="text-[#1B4FD8] flex-shrink-0"><MailIcon /></span>
                 <a
-                  href="mailto:info@ds-professionals.de"
+                  href="mailto:ds-professionals@outlook.de"
                   className="text-sm text-slate-400 hover:text-white transition-colors duration-200 break-all"
                 >
-                  info@ds-professionals.de
+                  ds-professionals@outlook.de
                 </a>
               </li>
 

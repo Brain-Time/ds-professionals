@@ -1,51 +1,56 @@
-// vite.config.js
-// Vite 5 Konfiguration mit React-Plugin, @ Alias und Tailwind CSS v4
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
-import path from 'path';
+/**
+ * vite.config.js
+ * ─────────────────────────────────────────────────────────────
+ * Performance-optimierter Vite Build + HMR WebSocket Fix
+ * ─────────────────────────────────────────────────────────────
+ */
+
+import { defineConfig }  from 'vite';
+import react             from '@vitejs/plugin-react';
+import tailwindcss       from '@tailwindcss/vite';    // ← NEU ✅
 
 export default defineConfig({
   plugins: [
-    // React Fast Refresh + JSX Transform
+    tailwindcss(),   // ← muss VOR react() stehen ✅
     react(),
-    // Tailwind CSS v4 als Vite-Plugin (kein postcss.config nötig)
-    tailwindcss(),
   ],
 
-  resolve: {
-    alias: {
-      // @ zeigt immer auf src/ → saubere Imports ohne ../../
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-
-  // Dev-Server Einstellungen
+  // ── Dev Server ───────────────────────────────────────────
   server: {
     port: 3000,
     open: true,
+    hmr: {
+      protocol: 'ws',
+      host:     'localhost',
+      port:     3000,
+    },
   },
 
-  // Build-Optimierungen für Lighthouse 95+
+  // ── Preview Server (nach npm run build) ─────────────────
+  preview: {
+    port: 4173,
+  },
+
   build: {
-    outDir: 'dist',
-    // Code-Splitting für bessere Performance
+    target: 'es2020',
+    chunkSizeWarningLimit: 500,
+
     rollupOptions: {
       output: {
         manualChunks: {
-          // Vendor-Chunk: React & Router
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          // Animation-Chunk: Framer Motion (groß → separat)
-          animations: ['framer-motion'],
+          'vendor-react':  ['react', 'react-dom'],
+          'vendor-router': ['react-router-dom'],
+          'vendor-motion': ['framer-motion'],
+          'vendor-helmet': ['react-helmet-async'],
+          'vendor-form':   ['react-hook-form', '@emailjs/browser'],
         },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
     },
-    // Kleinere Chunks für besseres Caching
-    chunkSizeWarningLimit: 600,
-  },
 
-  // Optimierungen für schnelleren Dev-Start
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion'],
+    minify:    'esbuild',
+    sourcemap: false,
   },
 });

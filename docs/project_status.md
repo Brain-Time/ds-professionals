@@ -1,6 +1,6 @@
 # 📊 D&S Professionals — Projektstatus
 
-**Letzte Aktualisierung:** 18. Juni 2026, 02:42 Uhr
+**Letzte Aktualisierung:** 18. Juni 2026, 16:56 Uhr
 **Entwickler:** Abdourazaki Derman
 **AI-Assistent:** Monica (claude-sonnet-4-6)
 
@@ -51,8 +51,8 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
 | **Schritt 3** | Layout (Navbar, Footer) | ✅ **ERLEDIGT** |
 | **Schritt 4** | HomePage Sektionen | ✅ **ERLEDIGT** |
 | **Schritt 5** | ServicesPage & ServiceDetail | ✅ **ERLEDIGT** |
-| **Schritt 6** | AboutPage & ContactPage | ⏳ **NEXT** |
-| **Schritt 7** | Animationen & Polish | ❌ Offen |
+| **Schritt 6** | AboutPage & ContactPage | ✅ **ERLEDIGT** |
+| **Schritt 7** | Animationen & Polish | ⏳ **NEXT** |
 | **Schritt 8** | SEO & Performance | ❌ Offen |
 | **Schritt 9** | Review & Deploy | ❌ Offen |
 
@@ -146,10 +146,11 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
 - [x] `src/main.jsx` ✅
       → React 18 `createRoot`
       → `HelmetProvider` + `ThemeProvider` + `BrowserRouter`
+      → React Router `future` Flags (`v7_startTransition`, `v7_relativeSplatPath`)
 
 - [x] `src/App.jsx` ✅
       → `Layout`-Wrapper mit React Router `<Routes>`
-      → Echte Pages eingebunden (Schritt 5 aktualisiert)
+      → Alle Pages eingebunden
 
 - [x] `src/styles/globals.css` ✅
       → Tailwind v4 Dark Mode: `@custom-variant dark`
@@ -183,13 +184,11 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
 - [x] `src/components/sections/StatsSection.jsx` — 4 Kennzahlen aus stats.js, useCountUp integriert, dunkler Gradient-Hintergrund, Gold-Suffix, Trennlinien
 - [x] `src/components/sections/TestimonialsSection.jsx` — 3 Karten, Initialen-Avatar, StarRating (SVG), QuoteIcon, Service-Badge, Gesamt-Bewertungs-Badge
 - [x] `src/components/sections/CtaSection.jsx` ✅
-      → „Bereit für professionelle Sauberkeit?"
       → Gold CTA Button „Jetzt Angebot anfragen"
       → Sekundärer Button „Direkt anrufen" (tel: Link)
       → Trust-Note: Kostenlos · 24h Antwort · Karlsruhe
       → Dunkelblauer Kontrasthintergrund + Blur-Dekor
       → Framer Motion staggered Animationen via `useInView`
-      → Alle Kommentare auf Englisch
 
 ### Wichtige Entscheidungen (Schritt 4):
 | Entscheidung | Begründung |
@@ -214,14 +213,11 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
       → `as` Prop (render als `<button>` oder `<Link>`)
       → Loading Spinner (SVG, `animate-spin`)
       → `disabled` + `aria-disabled` Support
-      → Tailwind-Klassen direkt (kein CSS-Var Overhead)
-      → Alle Kommentare auf Englisch
 
 - [x] `src/components/ui/SectionWrapper.jsx` ✅
       → Framer Motion `whileInView` Scroll-Fade + Y-Offset
       → `viewport={{ once: true, margin: '-80px' }}`
       → Konfigurierbare Props: `delay` | `duration` | `yOffset`
-      → Wiederverwendbar für alle Sektionen
 
 - [x] `src/pages/HomePage.jsx` ✅
       → Alle 6 Sektionen zusammengesetzt
@@ -232,8 +228,7 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
       → Alle 7 Services als Grid (1 → 2 → 3 Spalten)
       → `ServiceCard`: Accent-Bar + Icon + Titel + `shortDesc` + 3 Features + Link
       → Staggered Fade-in via `whileInView` + `custom` Index
-      → CTA Strip: „Nicht das Richtige gefunden?" + 2 Buttons (Gold + Outline)
-      → React Helmet SEO
+      → CTA Strip: „Nicht das Richtige gefunden?" + 2 Buttons
 
 - [x] `src/pages/ServiceDetailPage.jsx` ✅
       → Dynamisch via `useParams()` + `getServiceBySlug()`
@@ -242,51 +237,85 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
       → Beschreibung (`longDesc`) + vollständige Features-Checkliste (animiert)
       → Sticky CTA-Karte (rechts): Trust-Points + 2 Buttons
       → Related Services: 3 weitere Services (ohne aktuellen)
-      → React Helmet: dynamische SEO-Tags pro Service (`metaTitle`, `metaDesc`)
-
-- [x] `src/App.jsx` ✅ (aktualisiert)
-      → `ServicesPage` + `ServiceDetailPage` eingebunden
-      → `ComingSoon` Placeholder für `AboutPage` + `ContactPage`
-      → `font-extrabold` statt `font-700` Fix
+      → React Helmet: dynamische SEO-Tags pro Service
 
 ### Wichtige Entscheidungen (Schritt 5):
 | Entscheidung | Begründung |
 |---|---|
 | ✅ `whileInView` + `custom` Index für Stagger | Kein separater `useInView` Hook nötig |
 | ✅ `<Navigate replace />` bei 404-Slug | Kein Eintrag in Browser-History |
-| ✅ Sticky CTA-Karte auf `ServiceDetailPage` | Conversion-Optimierung, immer sichtbar |
+| ✅ Sticky CTA-Karte auf ServiceDetailPage | Conversion-Optimierung, immer sichtbar |
 | ✅ Related Services (max. 3) | Cross-Selling ohne Überwältigung |
-| ✅ Tailwind-Klassen direkt in `Button.jsx` | Kein CSS-Var Overhead, bessere Lesbarkeit |
-| ✅ `margin: '-80px'` in `viewport` | Animation startet bevor Element vollständig sichtbar |
 
 ---
 
-## ⏳ Schritt 6 — AboutPage & ContactPage (NEXT)
+## ✅ Schritt 6 — AboutPage & ContactPage (ERLEDIGT)
 
-### Geplante Dateien:
-- [ ] `src/pages/AboutPage.jsx`
+**Datum:** 18. Juni 2026
+
+### Erstellt:
+- [x] `src/pages/AboutPage.jsx` ✅
       → Unternehmensgeschichte
       → Referenzen (Indutec, Iwago, Wisag)
       → Werte & Versprechen
-      → Team-Bereich (optional)
+      → Team-Bereich
 
-- [ ] `src/pages/ContactPage.jsx`
+- [x] `src/pages/ContactPage.jsx` ✅
       → Kontaktformular (React Hook Form)
-      → Validierung (required, email format)
-      → EmailJS Integration
-      → Erfolgs-/Fehlermeldung
-      → Karte (Google Maps Embed oder Leaflet)
-      → Öffnungszeiten
+      → Validierung (required, email format, minLength, tel pattern)
+      → EmailJS Integration (funktioniert ✅)
+      → Erfolgs-/Fehlermeldung (AnimatePresence)
+      → Google Maps Embed (Wicherstr. 19, 76185 Karlsruhe)
+      → Öffnungszeiten-Karte
       → Adresse + Telefon + E-Mail
+      → Hero mit Breadcrumb + Trust-Badges
+      → React Helmet SEO
 
-- [ ] `src/hooks/useContactForm.js`
-      → React Hook Form Logik
+- [x] `src/hooks/useContactForm.js` ✅
+      → React Hook Form (`useForm`, `register`, `handleSubmit`)
       → EmailJS `send()` Aufruf
-      → Loading / Success / Error States
+      → Loading / Success / Error States (`idle | loading | success | error`)
+      → `resetStatus()` für „Neue Nachricht senden"
+      → Credentials via `.env` (VITE_EMAILJS_*)
+      → Template-Parameter: `from_name`, `from_email`, `from_phone`, `service_type`, `message`, `to_name`, `reply_to`
+
+- [x] Legal Pages ✅
+      → `src/pages/ImpressumPage.jsx`
+      → `src/pages/DatenschutzPage.jsx`
+      → `src/pages/AGBPage.jsx`
+      → `src/pages/NotFoundPage.jsx` (404)
+
+- [x] `src/components/utils/` ✅ (neue Utility-Komponenten)
+
+- [x] `.env` ✅
+      → `VITE_EMAILJS_SERVICE_ID`
+      → `VITE_EMAILJS_TEMPLATE_ID`
+      → `VITE_EMAILJS_PUBLIC_KEY`
+      → In `.gitignore` eingetragen
+
+- [x] EmailJS HTML-Template ✅
+      → Professionelles HTML-E-Mail-Design
+      → D&S Branding (dunkelblau + gold)
+      → Alle Template-Variablen korrekt eingebunden
+      → „Jetzt antworten" CTA-Button
+
+- [x] GitHub Push ✅
+      → Alle Änderungen committed & gepusht
+      → `.env` nicht im Repository
+
+### Wichtige Entscheidungen (Schritt 6):
+| Entscheidung | Begründung |
+|---|---|
+| ✅ `.env` für EmailJS-Keys | Sicherheit: Keys nicht im Git-Repository |
+| ✅ `VITE_` Prefix für env-Variablen | Vite-Konvention für Client-seitige Variablen |
+| ✅ `AnimatePresence mode="wait"` für Form/Success | Sauberer Übergang zwischen Zuständen |
+| ✅ Google Maps Embed (kein Leaflet) | Keine extra Dependency, einfacher |
+| ✅ `noValidate` auf `<form>` | Browser-Validierung deaktiviert → React Hook Form übernimmt |
+| ✅ HTML-E-Mail-Template mit Inline-CSS | E-Mail-Clients unterstützen kein externes CSS |
 
 ---
 
-## ⚪ Schritt 7 — Animationen & Polish
+## ⏳ Schritt 7 — Animationen & Polish (NEXT)
 
 - [ ] Alle Sektionen mit `SectionWrapper` wrappen
 - [ ] Stagger-Animationen für Listen (ServiceCards, Features)
@@ -348,7 +377,7 @@ vollständig in React neu bauen — als hochwertiges Portfolio-Stück.
       → Best Practices = 100 ✅
 
 - [ ] Vercel Deployment
-      → GitHub Repo erstellen
+      → GitHub Repo erstellen ✅
       → Vercel mit GitHub verbinden
       → Environment Variables setzen (EmailJS Keys)
       → Custom Domain (optional)
@@ -388,16 +417,21 @@ ds-professionals/
 │   │       ├── ServiceCard.jsx         ← ✅ Schritt 5
 │   │       ├── SectionWrapper.jsx      ← ✅ Schritt 5
 │   │       └── ThemeToggle.jsx         ← ✅ Schritt 2
+│   ├── components/utils/               ← ✅ Schritt 6
 │   ├── pages/
 │   │   ├── HomePage.jsx                ← ✅ Schritt 5
 │   │   ├── ServicesPage.jsx            ← ✅ Schritt 5
 │   │   ├── ServiceDetailPage.jsx       ← ✅ Schritt 5
-│   │   ├── AboutPage.jsx               ← ❌ Schritt 6
-│   │   └── ContactPage.jsx             ← ❌ Schritt 6
+│   │   ├── AboutPage.jsx               ← ✅ Schritt 6
+│   │   ├── ContactPage.jsx             ← ✅ Schritt 6
+│   │   ├── ImpressumPage.jsx           ← ✅ Schritt 6
+│   │   ├── DatenschutzPage.jsx         ← ✅ Schritt 6
+│   │   ├── AGBPage.jsx                 ← ✅ Schritt 6
+│   │   └── NotFoundPage.jsx            ← ✅ Schritt 6
 │   ├── hooks/
 │   │   ├── useTheme.js                 ← ✅ Schritt 2
 │   │   ├── useCountUp.js               ← ✅ Schritt 4
-│   │   └── useContactForm.js           ← ❌ Schritt 6
+│   │   └── useContactForm.js           ← ✅ Schritt 6
 │   ├── context/
 │   │   └── ThemeContext.jsx            ← ✅ Schritt 2
 │   ├── data/
@@ -411,6 +445,7 @@ ds-professionals/
 │   ├── changelog.md                    ← ✅
 │   ├── todo.md                         ← ✅
 │   └── projektstruktur.md              ← ✅
+├── .env                                ← ✅ (in .gitignore)
 ├── README.md                           ← ✅ Schritt 1
 ├── vite.config.js                      ← ✅ Schritt 1
 ├── tailwind.config.js                  ← ✅ Schritt 1
@@ -449,6 +484,11 @@ ds-professionals/
 | ✅ Alle Code-Kommentare auf Englisch | Konsistenz, internationale Lesbarkeit |
 | ✅ `<Navigate replace />` bei 404-Slug | Kein Eintrag in Browser-History |
 | ✅ Sticky CTA-Karte auf ServiceDetailPage | Conversion-Optimierung, immer sichtbar |
+| ✅ `.env` für EmailJS-Keys | Sicherheit: Keys nicht im Git-Repository |
+| ✅ `VITE_` Prefix für env-Variablen | Vite-Konvention für Client-seitige Variablen |
+| ✅ HTML-E-Mail-Template mit Inline-CSS | E-Mail-Clients unterstützen kein externes CSS |
+| ✅ Google Maps Embed statt Leaflet | Keine extra Dependency, einfacher |
+| ✅ `noValidate` auf `<form>` | Browser-Validierung deaktiviert → React Hook Form übernimmt |
 
 ---
 
@@ -478,3 +518,7 @@ ds-professionals/
 | Logo unsichtbar auf transparentem Hintergrund | SVG-Icon ohne Kontrast | Echte PNG-Logos verwenden |
 | Logo wechselt nicht beim Theme-Toggle | Kein Listener auf `html.dark` | `MutationObserver` auf `classList` |
 | `SyntaxError: useTheme not exported` | Falscher Import-Pfad | `@/context/ThemeContext` → `@/hooks/useTheme` |
+| React Router Warnings in Konsole | Fehlende `future` Flags | `v7_startTransition` + `v7_relativeSplatPath` in `main.jsx` |
+| Tailwind-Klassen greifen nicht (Layout kaputt) | Plugin-Reihenfolge in `vite.config.js` | `@tailwindcss/vite` vor `react()` ins `plugins`-Array |
+| EmailJS 400-Fehler | Falsche/fehlende Credentials | `error.text` loggen → Keys prüfen |
+| HMR-Verbindung bricht ab | WebSocket-Konfiguration fehlt | `server.hmr` in `vite.config.js` konfigurieren |

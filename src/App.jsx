@@ -1,59 +1,42 @@
-/**
- * App.jsx
- * ─────────────────────────────────────────────────────────────
- * Root application component
- *
- * Routing structure:
- *   /                        → HomePage
- *   /dienstleistungen        → ServicesPage
- *   /dienstleistungen/:slug  → ServiceDetailPage
- *   /ueber-uns               → AboutPage (Step 6)
- *   /kontakt                 → ContactPage (Step 6)
- *   *                        → 404 NotFoundPage
- * ─────────────────────────────────────────────────────────────
- */
+import { Suspense, lazy } from 'react';
+import { Routes, Route }  from 'react-router-dom';
 
-import { Routes, Route } from 'react-router-dom';
-import Layout             from './components/layout/Layout';
-import HomePage           from './pages/HomePage';
-import ServicesPage       from './pages/ServicesPage';
-import ServiceDetailPage  from './pages/ServiceDetailPage';
+import Navbar      from './components/layout/Navbar';
+import Footer      from './components/layout/Footer';
+import ScrollToTop from './components/utils/ScrollToTop';
+import PageLoader  from './components/utils/PageLoader';
 
-// ── Placeholder for pages not yet built (Step 6) ──────────────
-const ComingSoon = ({ title }) => (
-  <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#0D1B2A]">
-    <div className="text-center">
-      <p className="text-sm font-bold text-[#C9A84C] uppercase tracking-widest mb-3">
-        In Kürze verfügbar
-      </p>
-      <h1 className="text-3xl font-extrabold text-[#0D1B2A] dark:text-white">
-        {title}
-      </h1>
-    </div>
-  </div>
-);
+const HomePage        = lazy(() => import('./pages/HomePage'));
+const ServicesPage    = lazy(() => import('./pages/ServicesPage'));
+const ServiceDetail   = lazy(() => import('./pages/ServiceDetailPage'));
+const AboutPage       = lazy(() => import('./pages/AboutPage'));
+const ContactPage     = lazy(() => import('./pages/ContactPage'));
+const ImpressumPage   = lazy(() => import('./pages/ImpressumPage'));
+const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));
+const AGBPage         = lazy(() => import('./pages/AGBPage'));
+const NotFoundPage    = lazy(() => import('./pages/NotFoundPage'));
 
-// ── App component ──────────────────────────────────────────────
-const App = () => {
+export default function App() {
   return (
-    <Layout>
-      <Routes>
-        {/* Step 4 — done */}
-        <Route path="/"                        element={<HomePage />} />
+    <>
+      <ScrollToTop />
+      <Navbar />
 
-        {/* Step 5 — done */}
-        <Route path="/dienstleistungen"        element={<ServicesPage />} />
-        <Route path="/dienstleistungen/:slug"  element={<ServiceDetailPage />} />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/"                        element={<HomePage />} />
+          <Route path="/dienstleistungen"        element={<ServicesPage />} />
+          <Route path="/dienstleistungen/:slug"  element={<ServiceDetail />} />
+          <Route path="/ueber-uns"               element={<AboutPage />} />
+          <Route path="/kontakt"                 element={<ContactPage />} />
+          <Route path="/impressum"               element={<ImpressumPage />} />
+          <Route path="/datenschutz"             element={<DatenschutzPage />} />
+          <Route path="/agb"                     element={<AGBPage />} />
+          <Route path="*"                        element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
 
-        {/* Step 6 — coming soon */}
-        <Route path="/ueber-uns"               element={<ComingSoon title="Über uns" />} />
-        <Route path="/kontakt"                 element={<ComingSoon title="Kontakt" />} />
-
-        {/* 404 */}
-        <Route path="*"                        element={<ComingSoon title="404 – Seite nicht gefunden" />} />
-      </Routes>
-    </Layout>
+      <Footer />
+    </>
   );
-};
-
-export default App;
+}
