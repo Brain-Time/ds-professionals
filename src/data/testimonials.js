@@ -39,7 +39,7 @@ const testimonials = [
   },
   {
     id: 3,
-    name: 'Ughur Kitchen',
+    name: 'The Uyghur Kitchen',
     role: 'Kunde',
     company: 'Ughur Kitchen',
     initials: 'UK',

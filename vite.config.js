@@ -1,19 +1,31 @@
 /**
  * vite.config.js
  * ─────────────────────────────────────────────────────────────
- * Vite 8 + Rolldown kompatibel
- * manualChunks als Funktion (Objekt-Syntax nicht mehr supported)
+ * Vite 8 + Rolldown + SEO/Performance optimiert
  * ─────────────────────────────────────────────────────────────
  */
 
-import { defineConfig } from 'vite';
-import react            from '@vitejs/plugin-react';
-import tailwindcss      from '@tailwindcss/vite';
+import { defineConfig }   from 'vite';
+import react              from '@vitejs/plugin-react';
+import tailwindcss        from '@tailwindcss/vite';
+import compression        from 'vite-plugin-compression';
 
 export default defineConfig({
   plugins: [
-    tailwindcss(),  // ← muss VOR react() stehen
+    tailwindcss(),
     react(),
+    // Gzip
+    compression({
+      algorithm: 'gzip',
+      ext:       '.gz',
+      threshold: 1024,
+    }),
+    // Brotli (bessere Kompression, moderne Browser)
+    compression({
+      algorithm: 'brotliCompress',
+      ext:       '.br',
+      threshold: 1024,
+    }),
   ],
 
   // ── Dev Server ───────────────────────────────────────────
@@ -38,10 +50,11 @@ export default defineConfig({
     chunkSizeWarningLimit: 600,
     minify:               'oxc',
     sourcemap:            false,
+    // Bilder inline wenn < 4kb
+    assetsInlineLimit:    4096,
 
     rollupOptions: {
       output: {
-        // Vite 8 / Rolldown: manualChunks muss eine Funktion sein
         manualChunks(id) {
           if (id.includes('node_modules')) {
             if (id.includes('react-dom') || id.includes('react/'))
@@ -64,4 +77,3 @@ export default defineConfig({
     },
   },
 });
-

@@ -111,8 +111,8 @@ export default function DatenschutzPage() {
               <p>Wicherstr. 19, 76185 Karlsruhe</p>
               <p>
                 Telefon:{' '}
-                <a href="tel:+4917914555532" className="hover:text-amber-500 transition-colors">
-                  +49 179 1455532
+                <a href="tel:+491773512329" className="hover:text-amber-500 transition-colors">
+                  +49 177 3512329
                 </a>
               </p>
               <p>

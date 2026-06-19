@@ -118,14 +118,14 @@ export default function ImpressumPage() {
                 <span className="font-medium text-slate-700 dark:text-slate-300">Telefon:</span>{' '}
                 <a href="tel:+4917914555532"
                    className="hover:text-amber-500 transition-colors">
-                  +49 179 1455532
+                  +49 177 3512329
                 </a>
               </p>
               <p>
                 <span className="font-medium text-slate-700 dark:text-slate-300">Telefon:</span>{' '}
                 <a href="tel:+4915203288397"
                    className="hover:text-amber-500 transition-colors">
-                  +49 1520 3288397
+                  +49 179 1455532
                 </a>
               </p>
               <p>

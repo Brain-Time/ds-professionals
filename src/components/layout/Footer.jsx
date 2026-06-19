@@ -228,11 +228,11 @@ const Footer = () => {
               <li className="flex items-center gap-3">
                 <span className="text-[#1B4FD8] flex-shrink-0"><PhoneIcon /></span>
                 <a
-                  href="tel:+4917914555532"
+                  href="tel:+49 1773512329"
                   className="text-sm text-slate-400 hover:text-white transition-colors duration-200"
                   aria-label="Telefonnummer anrufen"
                 >
-                  +49 179 1455532
+                  +49 177 3512329
                 </a>
                               </li>
 
@@ -251,8 +251,8 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <span className="mt-0.5 text-[#1B4FD8] flex-shrink-0"><ClockIcon /></span>
                 <div className="text-sm text-slate-400 leading-relaxed">
-                  <p>Mo – Fr: 07:00 – 18:00 Uhr</p>
-                  <p>Sa: 08:00 – 14:00 Uhr</p>
+                  <p>Mo – Fr: 10:00 – 18:00 Uhr</p>
+                  <p>Sa: 10:00 – 16:00 Uhr</p>
                   <p className="text-slate-500">So: Geschlossen</p>
                 </div>
               </li>

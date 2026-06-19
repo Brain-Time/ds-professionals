@@ -43,11 +43,11 @@ export const footerNavigation = {
 export const contactInfo = {
   company: 'D&S Professionals',
   slogan: 'Mehr als nur sauber',
-  phone: '+49 1791455532',
-  email: 'info@ds-professionals.de',
+  phone: '+49 1773512329',
+  email: 'ds-professionals@outlook.de',
   address: 'Karlsruhe und Umgebung',
   hours: {
-    weekdays: 'Mo–Fr: 08:00–18:00 Uhr',
+    weekdays: 'Mo–Fr: 10:00–18:00 Uhr',
     weekend: 'Sa: Nach Vereinbarung',
   },
 };

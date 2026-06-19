@@ -1,0 +1,13 @@
+# robots.txt — D&S Professionals
+# https://ds-professionals.de
+
+User-agent: *
+Allow: /
+
+# Rechtliche Seiten nicht indexieren
+Disallow: /impressum
+Disallow: /datenschutz
+Disallow: /agb
+
+# Sitemap
+Sitemap: https://ds-professionals.de/sitemap.xml

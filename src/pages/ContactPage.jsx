@@ -31,8 +31,8 @@ const contactInfo = [
     id: 2,
     icon: '📞',
     label: 'Telefon',
-    lines: ['+49 179 1455532'],
-    href: 'tel:+4917914555532',
+    lines: ['+49 177 3512329'],
+    href: 'tel:+491773512329',
   },
   {
     id: 3,
@@ -45,8 +45,8 @@ const contactInfo = [
 
 // Opening hours
 const openingHours = [
-  { day: 'Montag – Freitag', hours: '07:00 – 18:00 Uhr' },
-  { day: 'Samstag',          hours: '08:00 – 14:00 Uhr' },
+  { day: 'Montag – Freitag', hours: '10:00 – 18:00 Uhr' },
+  { day: 'Samstag',          hours: '10:00 – 16:00 Uhr' },
   { day: 'Sonntag',          hours: 'Geschlossen' },
 ];
 
@@ -362,7 +362,7 @@ export default function ContactPage() {
                 >
                   <iframe
                     title="D&S Professionals — Wicherstr. 19, 76185 Karlsruhe"
-                    src="https://maps.google.com/maps?q=Wicherstra%C3%9Fe+19%2C+76185+Karlsruhe&output=embed&z=16"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.5!2d8.3682858!3d49.0070605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479706ee7ca2093b%3A0x345c0ba2b8e5f540!2sWichernstra%C3%9Fe+19%2C+76185+Karlsruhe!5e0!3m2!1sde!2sde!4v1"
                     width="100%"
                     height="220"
                     style={{ border: 0, display: 'block' }}
