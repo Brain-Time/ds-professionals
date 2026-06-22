@@ -38,8 +38,8 @@ const contactInfo = [
     id: 3,
     icon: '✉️',
     label: 'E-Mail',
-    lines: ['ds-professionals@outlook.de'],
-    href: 'mailto:ds-professionals@outlook.de',
+    lines: ['info@ds-professionals.de'],
+    href: 'mailto:info@ds-professionals.de',
   },
 ];
 

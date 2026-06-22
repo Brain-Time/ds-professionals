@@ -117,8 +117,8 @@ export default function DatenschutzPage() {
               </p>
               <p>
                 E-Mail:{' '}
-                <a href="mailto:ds-professionals@outlook.de" className="hover:text-amber-500 transition-colors">
-                  ds-professionals@outlook.de
+                <a href="mailto:info@ds-professionals.de" className="hover:text-amber-500 transition-colors">
+                  info@ds-professionals.de
                 </a>
               </p>
             </div>
@@ -279,7 +279,7 @@ export default function DatenschutzPage() {
             <p>
               Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:{' '}
               <a
-                href="mailto:ds-professionals@outlook.de"
+                href="mailto:info@ds-professionals.de"
                 className="text-amber-500 hover:underline"
               >
                 ds-professionals@outlook.de

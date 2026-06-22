@@ -176,10 +176,10 @@ export default function AGBPage() {
                   kennenlernen, bevor Sie sich festlegen. Die Probereinigung ist bei
                   anschließendem Vertragsabschluss für Sie kostenlos. Details auf Anfrage unter{' '}
                   <a
-                    href="mailto:ds-professionals@outlook.de"
+                    href="mailto:info@ds-professionals.de"
                     className="font-semibold underline hover:no-underline text-amber-700 dark:text-amber-400"
                   >
-                    ds-professionals@outlook.de
+                    info@ds-professionals.de
                   </a>{' '}
                   oder{' '}
                   <Link
@@ -329,10 +329,10 @@ export default function AGBPage() {
               Für eine rechtssichere Prüfung empfehlen wir die Konsultation eines
               Rechtsanwalts. Bei Fragen wenden Sie sich an{' '}
               <a
-                href="mailto:ds-professionals@outlook.de"
+                href="mailto:info@ds-professionals.de"
                 className="font-semibold underline hover:no-underline"
               >
-                ds-professionals@outlook.de
+                info@ds-professionals.de
               </a>.
             </p>
           </motion.div>

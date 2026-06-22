@@ -243,10 +243,10 @@ const Footer = () => {
               <li className="flex items-center gap-3">
                 <span className="text-[#1B4FD8] flex-shrink-0"><MailIcon /></span>
                 <a
-                  href="mailto:ds-professionals@outlook.de"
+                  href="mailto:info@ds-professionals.de"
                   className="text-sm text-slate-400 hover:text-white transition-colors duration-200 break-all"
                 >
-                  ds-professionals@outlook.de
+                  info@ds-professionals.de
                 </a>
               </li>
 

@@ -130,9 +130,9 @@ export default function ImpressumPage() {
               </p>
               <p>
                 <span className="font-medium text-slate-700 dark:text-slate-300">E-Mail:</span>{' '}
-                <a href="mailto:ds-professionals@outlook.de"
+                <a href="mailto:info@ds-professionals.de"
                    className="hover:text-amber-500 transition-colors">
-                  ds-professionals@outlook.de
+                  info@ds-professionals.de
                 </a>
               </p>
             </div>
