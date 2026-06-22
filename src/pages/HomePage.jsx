@@ -111,7 +111,7 @@ function ProbereinigungSection() {
 
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <a
-                  href="tel:+4917914555532"
+                  href="tel:+49 177 3512329"
                   className="inline-flex items-center gap-2
                              border border-slate-600 hover:border-slate-400
                              text-slate-300 hover:text-white font-semibold
@@ -123,7 +123,7 @@ function ProbereinigungSection() {
                     <path strokeLinecap="round" strokeLinejoin="round"
                       d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 1.27h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.91a16 16 0 006 6l.91-.91a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0121.73 16.92z" />
                   </svg>
-                  +49 179 1455532
+                  +49 177 3512329
                 </a>
               </motion.div>
             </div>

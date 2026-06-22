@@ -456,7 +456,7 @@ export default function ContactPage() {
                           <FormField label="Telefon" error={errors.phone}>
                             <input
                               type="tel"
-                              placeholder="+49 179 1455532"
+                              placeholder=" +49 177 3512329"
                               className={errors.phone ? inputErrorClass : inputClass}
                               {...register('phone', {
                                 pattern: {

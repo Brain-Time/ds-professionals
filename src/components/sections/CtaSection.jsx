@@ -128,7 +128,7 @@ const CTASection = () => {
 
             {/* Secondary: Phone link */}
             <motion.a
-              href="tel:+4917612345678"
+              href="tel:+491773512329"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className={[

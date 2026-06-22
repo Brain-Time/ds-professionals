@@ -116,14 +116,14 @@ export default function ImpressumPage() {
             <div className="space-y-1">
               <p>
                 <span className="font-medium text-slate-700 dark:text-slate-300">Telefon:</span>{' '}
-                <a href="tel:+4917914555532"
+                <a href="tel:+49 177 3512329"
                    className="hover:text-amber-500 transition-colors">
                   +49 177 3512329
                 </a>
               </p>
               <p>
                 <span className="font-medium text-slate-700 dark:text-slate-300">Telefon:</span>{' '}
-                <a href="tel:+4915203288397"
+                <a href="tel:+49 179 1455532"
                    className="hover:text-amber-500 transition-colors">
                   +49 179 1455532
                 </a>

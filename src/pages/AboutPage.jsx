@@ -370,13 +370,13 @@ export default function AboutPage() {
                   Jetzt Angebot anfragen
                 </Link>
                 <a
-                  href="tel:+4917914555532"
+                  href="tel: +49 177 3512329"
                   className="inline-flex items-center justify-center gap-2
                              border-2 border-white/30 hover:border-white/60
                              text-white font-bold px-8 py-4 rounded-xl
                              transition-colors duration-200"
                 >
-                  📞 +49 179 1455532
+                  📞  +49 177 3512329
                 </a>
               </div>
             </motion.div>
