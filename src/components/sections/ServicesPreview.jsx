@@ -85,7 +85,7 @@ const ServiceCard = ({ service, index }) => {
 
       {/* Kurzbeschreibung */}
       <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed flex-1 mb-5">
-        {service.shortDescription || service.description?.slice(0, 100) + '…'}
+        {service.shortDesc}
       </p>
 
       {/* Link */}
