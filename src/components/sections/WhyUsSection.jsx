@@ -52,7 +52,7 @@ const USP_ITEMS = [
 ];
 
 // ── Referenz-Logos (Text-basiert) ──────────────────────────────
-const REFERENCES = ['Glanzgruppe','Juric Gebäudereinigung', 'Die Wohlfühlberater', 'Ughur Kitchen', 'u.v.m.'];
+const REFERENCES = ['Glanzgruppe','Juric Gebäudereinigung', 'Die Wohlfühlberater', 'The Uyghur Kitchen', 'u.v.m.'];
 
 // ── Animation Varianten ────────────────────────────────────────
 const containerVariants = {
