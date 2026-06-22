@@ -118,6 +118,9 @@ const Footer = () => {
                 src={logoDark}
                 alt="D&S Professionals Logo"
                 className="h-10 w-auto object-contain"
+                loading="lazy"
+                width="160"    
+                height="40" 
               />
               {/* Divider */}
               <span className="w-px h-8 bg-slate-600" aria-hidden="true" />

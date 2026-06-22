@@ -165,6 +165,9 @@ const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
+              fetchpriority="high"
+              width="160"    
+              height="44" 
             />
 
             {/* Divider */}

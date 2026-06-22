@@ -34,9 +34,8 @@ export default function App() {
           <Route path="/agb"                     element={<AGBPage />} />
           <Route path="*"                        element={<NotFoundPage />} />
         </Routes>
+        <Footer />
       </Suspense>
-
-      <Footer />
     </>
   );
 }

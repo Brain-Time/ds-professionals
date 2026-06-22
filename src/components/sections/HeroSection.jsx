@@ -159,7 +159,7 @@ const HeroSection = () => {
             variants={itemVariants}
             className="text-sm text-white/50 mb-10"
           >
-            Vertraut von Indutec · Iwago · Wisag · Glanzgruppe · Juric Gebäudereinigung · Die Wohlfühlberater · Ughur Kitchen und vielen weiteren.
+            Vertraut von Indutec · Iwago · Wisag · Glanzgruppe · Juric Gebäudereinigung · Die Wohlfühlberater · The Uyghur Kitchen und vielen weiteren.
           </motion.p>
 
           {/* ── CTA Buttons ───────────────────────────────── */}
